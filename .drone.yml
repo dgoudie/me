@@ -1,0 +1,79 @@
+kind: pipeline
+name: default
+
+steps:
+- name: install
+  image: node:10-alpine 
+  commands: 
+  - npm set registry https://$${NEXUS_NPM_REPO}/
+  - npm set //$${NEXUS_NPM_REPO}/:_authToken=$${NPM_TOKEN}
+  - npm ci --only=production
+  environment:
+    NEXUS_NPM_REPO:
+      from_secret: NEXUS_NPM_REPO
+    NPM_TOKEN:
+      from_secret: NPM_TOKEN
+- name: react build
+  image: node:10-alpine 
+  commands: 
+  - "npm run build"
+  environment:
+    NODE_PATH: src
+- name: docker build
+  image: docker
+  commands:
+  - docker rm $${HOST_NAME} -f || true
+  - docker build -t $${DOCKER_REPO_NAME} .
+  environment:
+    DOCKER_REPO_NAME:
+      from_secret: DOCKER_REPO_NAME
+    HOST_NAME:
+      from_secret: HOST_NAME
+  volumes:
+  - name: socket
+    path: /var/run/docker.sock
+- name: run
+  image: docker
+  commands:
+  - docker run
+      --detach
+      --restart=always
+      --name $${HOST_NAME}
+      --network="nginx_default"
+      -e "VIRTUAL_HOST=$${DOMAIN}"
+      -e "LETSENCRYPT_HOST=$${DOMAIN}"
+      -e "LETSENCRYPT_EMAIL=$${EMAIL}"
+      $${DOCKER_REPO_NAME}
+  environment:
+    DOCKER_REPO_NAME:
+      from_secret: DOCKER_REPO_NAME
+    HOST_NAME:
+      from_secret: HOST_NAME
+    EMAIL:
+      from_secret: EMAIL
+    DOMAIN:
+      from_secret: DOMAIN
+  volumes:
+  - name: socket
+    path: /var/run/docker.sock
+- name: notify
+  image: drillster/drone-email
+  host: smtp.gmail.com
+  from: "${NOTIFY_EMAIL_USERNAME}@gmail.com"
+  environment: 
+    EMAIL_HOST: "smtp.gmail.com"
+    PLUGIN_FROM:
+      from_secret: NOTIFY_EMAIL_ADDRESS
+    EMAIL_RECIPIENTS:
+      from_secret: EMAIL
+    PLUGIN_RECIPIENTS_ONLY: true
+    EMAIL_USERNAME:
+      from_secret: NOTIFY_EMAIL_USERNAME
+    EMAIL_PASSWORD:
+      from_secret: NOTIFY_EMAIL_PASSWORD
+  when:
+    status: [ success, changed, failure ]
+volumes:
+- name: socket
+  host:
+    path: /var/run/docker.sock
