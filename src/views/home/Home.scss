@@ -1,7 +1,7 @@
 .home {
     header {
-        background: #0c2230;
-        color: white;
+        background: var(--color-primary);
+        color: var(--color-on-primary);
         letter-spacing: 2px;
         padding: 5em;
 
@@ -19,6 +19,47 @@
             }
             h3 {
                 font-weight: lighter;
+            }
+        }
+
+        &.fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            .me {
+                display: none;
+            }
+            .header-inner {
+                h1 {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    footer {
+        max-width: 1280px;
+        margin: 0 auto 18px;
+        position: fixed;
+        background: white;
+        bottom: 0;
+        right: 0;
+        left: 0;
+
+        .line {
+            height: 2px;
+            background: var(--color-text-primary);
+        }
+
+        .footer-inner {
+            margin: 12px 36px 0;
+            display: flex;
+            justify-content: space-between;
+
+            strong,
+            i {
+                margin-right: 4px;
+                color: var(--color-text-primary);
             }
         }
     }
