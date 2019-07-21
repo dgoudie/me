@@ -1,7 +1,8 @@
 {
     "defaultSeverity": "error",
     "extends": [
-        "tslint:recommended"
+        "tslint:recommended",
+        "tslint-react"
     ],
     "jsRules": {},
     "rules": {
@@ -18,7 +19,8 @@
                 "allow-leading-underscore"
             ]
         },
-        "interface-name": false
+        "interface-name": false,
+        "jsx-self-close": true
     },
     "rulesDirectory": []
 }

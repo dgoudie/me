@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Info } from 'reducers/info-reducer';
+
+import Education from 'views/components/education/Education';
+import WorkExperience from 'views/components/work-experience/WorkExperience';
+
 import './Home.scss';
 
 class Home extends Component<{ info: Info }> {
@@ -15,37 +19,8 @@ class Home extends Component<{ info: Info }> {
                             <h1>{info.name}</h1>
                             <h3>{info.title}</h3>
                         </section>
-                        <section className="education">
-                            <h2>Education</h2>
-                            <ol>
-                                {info.education.map((educationItem) => (
-                                    <li>
-                                        <h4>{educationItem.title}</h4>
-                                        <span>{educationItem.secondaryInfo}</span>
-                                        <span>{educationItem.tertiaryInfo}</span>
-                                    </li>
-                                ))}
-                            </ol>
-                        </section>
-                        <section className="work-experience">
-                            <h2>Education</h2>
-                            <ol>
-                                <li className="present">
-                                    <div className="dotted-line up"></div>
-                                    <div className="cirle"></div>
-                                    <div className="line-down"></div>
-                                    <span>Present</span>
-                                </li>
-                                {info.workExperience.map((workExperienceItem) => (
-                                    <li>
-                                        <div className="dotted-line up"></div>
-                                        <div className="cirle"></div>
-                                        <div className="line-down"></div>
-                                        <span>Present</span>
-                                    </li>
-                                ))}
-                            </ol>
-                        </section>
+                        <Education />
+                        <WorkExperience />
                     </div>
                     <div className="column" id="column2"></div>
                     <div className="column" id="column3"></div>

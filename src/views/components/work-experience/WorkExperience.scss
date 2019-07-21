@@ -1,0 +1,62 @@
+.work-experience {
+    --date-width: 42px;
+    ol {
+        list-style-type: none;
+        margin: 0 12px;
+        padding: 0;
+    }
+
+    li {
+        margin: 16px 0;
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 42px;
+    }
+
+    .date {
+        color: var(--blue-color);
+        display: flex;
+        flex-direction: column;
+        min-width: var(--date-width);
+    }
+
+    .circle {
+        height: 8px;
+        width: 8px;
+        border-radius: 24px;
+        background: transparent;
+        border: 2px solid var(--blue-color);
+        margin: 0 8px;
+    }
+
+    .line {
+        position: absolute;
+        width: 0px;
+        border-left: 2px solid var(--blue-color);
+        height: calc(100% + 6px);
+        left: calc(var(--date-width) + 13px);
+        &.down {
+            top: 27px;
+        }
+
+        &.up {
+            bottom: 28px;
+        }
+
+        &.dotted {
+            height: 50%;
+            border-left-style: dotted;
+        }
+    }
+
+    h4 {
+        font-size: 0.9rem;
+        display: block;
+        margin: 4px 0;
+    }
+
+    span {
+        font-size: 0.8rem;
+    }
+}
