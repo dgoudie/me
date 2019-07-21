@@ -7,11 +7,23 @@
 
     li {
         margin: 16px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        height: 64px;
+    }
+
+    .img-wrapper {
+        min-width: 120px;
+        display: flex;
+        justify-content: center;
     }
 
     h4,
     span {
         display: block;
-        margin: 4px 0;
+        margin: 8px 0;
     }
 }

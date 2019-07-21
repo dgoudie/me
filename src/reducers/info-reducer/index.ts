@@ -4,14 +4,13 @@ const initialState: { info: Info } = {
         title: `Full-Stack Software Developer`,
         education: [
             {
+                icon: `uno.png`,
                 title: `Bachelor's Degree in Cyber-Security`,
-                secondaryInfo: `College of IS&T, University at Nebraska - Omaha`,
-                tertiaryInfo: `3.3 GPA`,
-            },
-            {
-                title: `High School Diploma`,
-                secondaryInfo: `Elmwood-Murdock High School`,
-                tertiaryInfo: `3.6 GPA; Class Rank: #4`,
+                secondaryInfo: [
+                    `Minor in Computer Science`,
+                    `College of IS&T, University at Nebraska - Omaha`,
+                    `3.3 GPA`,
+                ],
             },
         ],
         workExperience: [
@@ -20,24 +19,31 @@ const initialState: { info: Info } = {
                 jobTitle: `Full-Stack Developer, Systems Engineering`,
                 startMonth: `May`,
                 startYear: 2018,
+                endMonth: `Present`
             },
             {
                 company: `Union Pacific Railroad`,
                 jobTitle: `Intern - Integration Test Lab`,
                 startMonth: `March`,
                 startYear: 2017,
+                endMonth: `May`,
+                endYear: 2018
             },
             {
                 company: `Union Pacific Railroad`,
                 jobTitle: `Intern - Network Equipment Build Center`,
                 startMonth: `Feb`,
                 startYear: 2016,
+                endMonth: `March`,
+                endYear: 2017
             },
             {
                 company: `Best Buy`,
                 jobTitle: `Sales Associate - Computing`,
                 startMonth: `Feb`,
                 startYear: 2015,
+                endMonth: `Feb`,
+                endYear: 2016
             },
         ],
     },
@@ -57,9 +63,9 @@ export interface Info {
 }
 
 export interface EducationItem {
+    icon: string;
     title: string;
-    secondaryInfo: string;
-    tertiaryInfo: string;
+    secondaryInfo: string[];
 }
 
 export interface WorkExperienceItem {
@@ -67,4 +73,6 @@ export interface WorkExperienceItem {
     jobTitle: string;
     startMonth: string;
     startYear: number;
+    endMonth: string;
+    endYear?: number;
 }

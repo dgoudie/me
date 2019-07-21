@@ -12,18 +12,20 @@ class WorkExperience extends Component<{ info: Info }> {
             <section className="work-experience">
                 <h2>Work experience</h2>
                 <ol>
-                    <li className="present">
-                        <div className="date" />
-                        <div className="circle" />
-                        <div className="line down" />
-                        <h4>Present</h4>
-                    </li>
                     {info.workExperience.map((workExperienceItem, index) => (
                         <li>
                             <div className="date">
-                                <span>{workExperienceItem.startMonth}</span>
-                                <span>{workExperienceItem.startYear}</span>
+                                <div className="start">
+                                    <span>{workExperienceItem.startMonth}</span>
+                                    <span>{workExperienceItem.startYear}</span>
+                                </div>
+                                <div className="dash" />
+                                <div className="start">
+                                    <span>{workExperienceItem.endMonth}</span>
+                                    {!!workExperienceItem.endYear ? <span>{workExperienceItem.endYear}</span> : null}
+                                </div>
                             </div>
+                            {index === 0 ? <div className="line up dotted" /> : null}
                             <div className="circle" />
                             <div className={`line down ${index >= info.workExperience.length - 1 ? `dotted` : ``}`} />
                             <div>

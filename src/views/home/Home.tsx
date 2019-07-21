@@ -14,16 +14,12 @@ class Home extends Component<{ info: Info }> {
         return (
             <div className="home">
                 <div className="column-wrapper">
-                    <div className="column" id="column1">
-                        <section>
-                            <h1>{info.name}</h1>
-                            <h3>{info.title}</h3>
-                        </section>
-                        <Education />
-                        <WorkExperience />
-                    </div>
-                    <div className="column" id="column2"></div>
-                    <div className="column" id="column3"></div>
+                    <section className="title">
+                        <h1>{info.name}</h1>
+                        <h3>{info.title}</h3>
+                    </section>
+                    <Education />
+                    <WorkExperience />
                 </div>
             </div>
         );

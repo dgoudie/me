@@ -11,13 +11,19 @@ class Education extends Component<{ info: Info }> {
             <section className="education">
                 <h2>Education</h2>
                 <ol>
-                    {info.education.map((educationItem) => (
+                    {info.education.map((educationItem) => [
                         <li>
-                            <h4>{educationItem.title}</h4>
-                            <span>{educationItem.secondaryInfo}</span>
-                            <span>{educationItem.tertiaryInfo}</span>
+                            <div className="img-wrapper">
+                                <img src={`${process.env.PUBLIC_URL}/education/${educationItem.icon}`} alt="School Icon" />
+                            </div>
+                            <div>
+                                <h4>{educationItem.title}</h4>
+                                {educationItem.secondaryInfo.map((si) => (
+                                    <span>{si}</span>
+                                ))}
+                            </div>
                         </li>
-                    ))}
+                    ])}
                 </ol>
             </section>
         );
