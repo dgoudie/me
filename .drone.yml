@@ -78,7 +78,7 @@ steps:
     EMAIL_PASSWORD:
       from_secret: NOTIFY_EMAIL_PASSWORD
   when:
-    status: [ success, changed, failure ]
+    status: [ changed, failure ]
 volumes:
 - name: socket
   host:
