@@ -35,6 +35,8 @@ steps:
   when:
     branch:
     - master
+    event:
+    - push
 - name: run
   image: docker
   commands:
@@ -62,6 +64,8 @@ steps:
   when:
     branch:
     - master
+    event:
+    - push
 - name: notify
   image: drillster/drone-email
   host: smtp.gmail.com
