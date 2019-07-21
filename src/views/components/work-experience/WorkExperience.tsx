@@ -28,7 +28,7 @@ class WorkExperience extends Component<{ info: Info }> {
                             {index === 0 ? <div className="line up dotted" /> : null}
                             <div className="circle" />
                             <div className={`line down ${index >= info.workExperience.length - 1 ? `dotted` : ``}`} />
-                            <img src={`${process.env.PUBLIC_URL}/work-experience/${workExperienceItem.icon}`}/>
+                            <img src={`${process.env.PUBLIC_URL}/work-experience/${workExperienceItem.icon}`} alt="Company"/>
                             <div>
                                 <h4>{workExperienceItem.jobTitle}</h4>
                                 <span>{workExperienceItem.company}</span>
