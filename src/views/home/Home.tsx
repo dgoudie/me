@@ -6,6 +6,8 @@ import Education from 'views/components/education/Education';
 import WorkExperience from 'views/components/work-experience/WorkExperience';
 
 import './Home.scss';
+import Interests from 'views/components/interests/Interests';
+import TopSkills from 'views/components/top-skills/TopSkills';
 
 class Home extends Component<{ info: Info }> {
 
@@ -18,8 +20,14 @@ class Home extends Component<{ info: Info }> {
                         <h1>{info.name}</h1>
                         <h3>{info.title}</h3>
                     </section>
+                    <section className="about">
+                        <h2>About Me</h2>
+                        {info.about.map(infoItem => (<p>{infoItem}</p>))}
+                    </section>
                     <Education />
                     <WorkExperience />
+                    <Interests />
+                    <TopSkills />
                 </div>
             </div>
         );

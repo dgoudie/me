@@ -2,6 +2,15 @@ const initialState: { info: Info } = {
     info: {
         name: `Daniel Goudie`,
         title: `Full-Stack Software Developer`,
+        about: [
+            `Hi! I'm a full-stack developer with both front-end and back-end 
+            experience in a microservice dev-ops -based environment. I have successfully
+            helped build and roll out multiple enterprise-wide collaboration and continuous
+            integration systems. `,
+            `I thrive in environments using bleeding-edge technologies,
+            and always have a number of project of my own in progress at home. I enjoy discussing
+            technology with colleagues and friends.`,
+        ],
         education: [
             {
                 icon: `uno.png`,
@@ -15,6 +24,7 @@ const initialState: { info: Info } = {
         ],
         workExperience: [
             {
+                icon: 'up.png',
                 company: `Union Pacific Railroad`,
                 jobTitle: `Full-Stack Developer, Systems Engineering`,
                 startMonth: `May`,
@@ -22,6 +32,7 @@ const initialState: { info: Info } = {
                 endMonth: `Present`
             },
             {
+                icon: 'up.png',
                 company: `Union Pacific Railroad`,
                 jobTitle: `Intern - Integration Test Lab`,
                 startMonth: `March`,
@@ -30,6 +41,7 @@ const initialState: { info: Info } = {
                 endYear: 2018
             },
             {
+                icon: 'up.png',
                 company: `Union Pacific Railroad`,
                 jobTitle: `Intern - Network Equipment Build Center`,
                 startMonth: `Feb`,
@@ -38,6 +50,7 @@ const initialState: { info: Info } = {
                 endYear: 2017
             },
             {
+                icon: 'bb.png',
                 company: `Best Buy`,
                 jobTitle: `Sales Associate - Computing`,
                 startMonth: `Feb`,
@@ -46,6 +59,14 @@ const initialState: { info: Info } = {
                 endYear: 2016
             },
         ],
+        interests: [
+            'Development (Front/Back End)',
+            'Dev-Ops / CICD',
+            'Virtualized / Containerized Environments',
+            'UI / UX',
+            'New / Emerging Technologies',
+            'Microservices'
+        ]
     },
 };
 
@@ -58,8 +79,10 @@ export default (state = initialState, action: { type: string }) => {
 export interface Info {
     name: string;
     title: string;
+    about: string[];
     education: EducationItem[];
     workExperience: WorkExperienceItem[];
+    interests: string[];
 }
 
 export interface EducationItem {
@@ -69,6 +92,7 @@ export interface EducationItem {
 }
 
 export interface WorkExperienceItem {
+    icon: string;
     company: string;
     jobTitle: string;
     startMonth: string;
