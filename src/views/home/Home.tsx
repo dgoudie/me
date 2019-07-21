@@ -1,72 +1,62 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Info } from 'reducers/info-reducer';
 import './Home.scss';
 
-class Home extends Component {
+class Home extends Component<{ info: Info }> {
 
-    public state = {
-        titleFontSize: 10,
-        headerPadding: 5,
-    };
-
-    public componentDidMount() {
-        window.addEventListener(`scroll`, this.handleScroll);
-    }
-
-    public componentWillUnmount() {
-        window.removeEventListener(`scroll`, this.handleScroll);
-    }
     public render() {
-        const { titleFontSize, headerPadding } = this.state;
+        const { info } = this.props;
         return (
             <div className="home">
-                <header className={titleFontSize < 10 ? `fixed` : ``} style={{ padding: `${headerPadding}em` }}>
-                    <div className="header-inner">
-                        <div className="me">
-                            <h2>Daniel Goudie</h2>
-                            <h3>Full Stack Software Developer</h3>
-                        </div>
-                        <h1 style={{ fontSize: `${titleFontSize}rem` }}>Hello!</h1>
+                <div className="column-wrapper">
+                    <div className="column" id="column1">
+                        <section>
+                            <h1>{info.name}</h1>
+                            <h3>{info.title}</h3>
+                        </section>
+                        <section className="education">
+                            <h2>Education</h2>
+                            <ol>
+                                {info.education.map((educationItem) => (
+                                    <li>
+                                        <h4>{educationItem.title}</h4>
+                                        <span>{educationItem.secondaryInfo}</span>
+                                        <span>{educationItem.tertiaryInfo}</span>
+                                    </li>
+                                ))}
+                            </ol>
+                        </section>
+                        <section className="work-experience">
+                            <h2>Education</h2>
+                            <ol>
+                                <li className="present">
+                                    <div className="dotted-line up"></div>
+                                    <div className="cirle"></div>
+                                    <div className="line-down"></div>
+                                    <span>Present</span>
+                                </li>
+                                {info.workExperience.map((workExperienceItem) => (
+                                    <li>
+                                        <div className="dotted-line up"></div>
+                                        <div className="cirle"></div>
+                                        <div className="line-down"></div>
+                                        <span>Present</span>
+                                    </li>
+                                ))}
+                            </ol>
+                        </section>
                     </div>
-                </header>
-                <div className="body" style={{ height: `2000px` }}>
-
+                    <div className="column" id="column2"></div>
+                    <div className="column" id="column3"></div>
                 </div>
-                <footer>
-                    <div className="line"></div>
-                    <div className="footer-inner">
-                        <div>
-                            <i className="fas fa-phone"></i>
-                            <strong>Phone:</strong>
-                            <span>402-618-5756</span>
-                        </div>
-                        <div>
-                            <i className="fab fa-linkedin"></i>
-                            <strong>LinkedIn:</strong>
-                            <a href="https://www.linkedin.com/in/daniel-goudie-817b93115">Daniel Goudie</a>
-                        </div>
-                        <div>
-                            <i className="fas fa-envelope"></i>
-                            <strong>Email:</strong>
-                            <a href="mailto:emdgoudie@gmail.com">emdgoudie@gmail.com</a>
-                        </div>
-                    </div>
-                </footer>
             </div>
         );
     }
-
-    public handleScroll = () => {
-        let height = window.scrollY;
-        if (height < 160) {
-            height = 160;
-        } else if (height > 320) {
-            height = 320;
-        }
-        this.setState({
-            headerPadding: ((-(height - 320) / 160) * 4) + 1,
-            titleFontSize: (((160 - height) / 160) * 7) + 10,
-        });
-    }
 }
 
-export default Home;
+const mapStateToProps = (state: any) => ({
+    info: state.infoReducer.info,
+});
+
+export default connect(mapStateToProps, null)(Home);

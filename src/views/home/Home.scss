@@ -1,66 +1,59 @@
 .home {
-    header {
-        background: var(--color-primary);
-        color: var(--color-on-primary);
-        letter-spacing: 2px;
-        padding: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 24px 24px 0;
+    color: var(--color-on-primary);
+    font-family: "Ubuntu", sans-serif;
 
-        .header-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            h1 {
-                font-family: "Caveat", cursive;
-                font-size: 10rem;
-                margin-bottom: 0;
+    .column-wrapper {
+        display: flex;
+        width: 100%;
+        max-width: 1280px;
+        position: relative;
+        box-shadow: 0 10px 6px -6px #777;
+        border-radius: 5px;
+
+        .column {
+            // padding-top: 129.4%;
+            background-color: #e1e2e3;
+            flex: 1;
+
+            &:not(:last-child) {
+                border-right: 1px solid #c0c0c0;
             }
+
+            section {
+                padding: 12px 0;
+            }
+
+            h1,
             h2,
             h3 {
-                margin: 0;
+                text-transform: uppercase;
+                margin: 0 12px;
             }
-            h3 {
-                font-weight: lighter;
-            }
-        }
 
-        &.fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            .me {
-                display: none;
-            }
-            .header-inner {
-                h1 {
-                    margin: 0;
-                }
+            h1 {
+                font-size: 2.5rem;
             }
         }
     }
-    footer {
-        max-width: 1280px;
-        margin: 0 auto 18px;
-        position: fixed;
-        background: white;
-        bottom: 0;
-        right: 0;
-        left: 0;
 
-        .line {
-            height: 2px;
-            background: var(--color-text-primary);
+    .education {
+        ol {
+            list-style-type: none;
+            margin: 0 12px;
+            padding: 0;
         }
 
-        .footer-inner {
-            margin: 12px 36px 0;
-            display: flex;
-            justify-content: space-between;
+        li {
+            margin: 16px 0;
+        }
 
-            strong,
-            i {
-                margin-right: 4px;
-                color: var(--color-text-primary);
-            }
+        h4, span {
+            display: block;
+            margin: 4px 0;
         }
     }
 }

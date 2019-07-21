@@ -32,6 +32,11 @@ steps:
   volumes:
   - name: socket
     path: /var/run/docker.sock
+  when:
+    branch:
+    - master
+    event:
+    - push
 - name: run
   image: docker
   commands:
@@ -56,6 +61,11 @@ steps:
   volumes:
   - name: socket
     path: /var/run/docker.sock
+  when:
+    branch:
+    - master
+    event:
+    - push
 - name: notify
   image: drillster/drone-email
   host: smtp.gmail.com
@@ -72,7 +82,7 @@ steps:
     EMAIL_PASSWORD:
       from_secret: NOTIFY_EMAIL_PASSWORD
   when:
-    status: [ success, changed, failure ]
+    status: [ changed, failure ]
 volumes:
 - name: socket
   host:
