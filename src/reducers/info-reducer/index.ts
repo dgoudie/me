@@ -124,11 +124,13 @@ const initialState: { info: Info } = {
             },
             {
                 icon: 'git.png',
-                name: 'Git'
+                name: 'Git',
+                link: 'https://github.com/dgoudie/me'
             },
             {
                 icon: 'drone.png',
-                name: 'Drone CI'
+                name: 'Drone CI',
+                link: 'https://drone.stan.systems/dgoudie/me'
             },
             {
                 icon: 'nginx.png',
@@ -191,4 +193,5 @@ export interface TopSkill {
 export interface BuiltWithItem {
     icon: string;
     name: string;
+    link?: string;
 }

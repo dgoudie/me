@@ -13,8 +13,8 @@ class BuiltWith extends Component<{ info: Info }> {
                 <div className='grid'>
                     {builtWith.map((bw, i) => (
                         <div key={i}>
-                            <img src={`${process.env.PUBLIC_URL}/built-with/${bw.icon}`}  alt="Product Icon"/>
-                            <span>{bw.name}</span>
+                            <img src={`${process.env.PUBLIC_URL}/built-with/${bw.icon}`} alt="Product Icon" />
+                            {!!bw.link ? <a href={bw.link} target='_blank' rel='noreferrer noopener'>{bw.name}</a> : <span>{bw.name}</span>}
                         </div>
                     ))}
                 </div>
