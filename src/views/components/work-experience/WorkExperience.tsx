@@ -12,8 +12,8 @@ class WorkExperience extends Component<{ info: Info }> {
             <section className="work-experience">
                 <h2>Work experience</h2>
                 <ol>
-                    {info.workExperience.map((workExperienceItem, index) => (
-                        <li>
+                    {info.workExperience.map((workExperienceItem, i) => (
+                        <li key={i}>
                             <div className="date">
                                 <div className="start">
                                     <span>{workExperienceItem.startMonth}</span>
@@ -25,9 +25,9 @@ class WorkExperience extends Component<{ info: Info }> {
                                     {!!workExperienceItem.endYear ? <span>{workExperienceItem.endYear}</span> : null}
                                 </div>
                             </div>
-                            {index === 0 ? <div className="line up dotted" /> : null}
+                            {i === 0 ? <div className="line up dotted" /> : null}
                             <div className="circle" />
-                            <div className={`line down ${index >= info.workExperience.length - 1 ? `dotted` : ``}`} />
+                            <div className={`line down ${i >= info.workExperience.length - 1 ? `dotted` : ``}`} />
                             <img src={`${process.env.PUBLIC_URL}/work-experience/${workExperienceItem.icon}`} alt="Company"/>
                             <div>
                                 <h4>{workExperienceItem.jobTitle}</h4>

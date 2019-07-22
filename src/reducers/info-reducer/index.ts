@@ -66,7 +66,75 @@ const initialState: { info: Info } = {
             'UI / UX',
             'New / Emerging Technologies',
             'Microservices'
-        ]
+        ],
+        topSkills: [
+            {
+                name: 'Angular / AngularJS',
+                percentage: 85
+            },
+            {
+                name: 'JavaScript / TypeScript / NodeJS',
+                percentage: 80
+            },
+            {
+                name: 'Java / Kotlin',
+                percentage: 80
+            },
+            {
+                name: 'Spring Boot / Web / AOP',
+                percentage: 70
+            }
+        ],
+        builtWith: [
+            {
+                icon: 'react.png',
+                name: 'ReactJS'
+            },
+            {
+                icon: 'ts.png',
+                name: 'TypeScript'
+            },
+            {
+                icon: 'sass.png',
+                name: 'Sass'
+            },
+            {
+                icon: 'graphql.png',
+                name: 'GraphQL'
+            },
+            {
+                icon: 'kotlin.png',
+                name: 'Kotlin'
+            },
+            {
+                icon: 'spring.png',
+                name: 'Spring'
+            },
+            {
+                icon: 'maven.png',
+                name: 'Maven'
+            },
+            {
+                icon: 'git.png',
+                name: 'Git'
+            },
+            {
+                icon: 'drone.png',
+                name: 'Drone CI'
+            },
+            {
+                icon: 'nginx.png',
+                name: 'Nginx'
+            },
+            {
+                icon: 'docker.png',
+                name: 'Docker'
+            },
+            {
+                icon: 'ubuntu.png',
+                name: 'Ubuntu'
+            }
+        ],
     },
 };
 
@@ -83,6 +151,8 @@ export interface Info {
     education: EducationItem[];
     workExperience: WorkExperienceItem[];
     interests: string[];
+    topSkills: TopSkill[];
+    builtWith: BuiltWithItem[];
 }
 
 export interface EducationItem {
@@ -99,4 +169,14 @@ export interface WorkExperienceItem {
     startYear: number;
     endMonth: string;
     endYear?: number;
+}
+
+export interface TopSkill {
+    name: string;
+    percentage: number;
+}
+
+export interface BuiltWithItem {
+    icon: string;
+    name: string;
 }

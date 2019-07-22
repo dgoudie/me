@@ -11,8 +11,8 @@ class Interests extends Component<{ info: Info }> {
             <section className="interests">
                 <h2>Tech Interests</h2>
                 <ol>
-                    {info.interests.map(interest => (
-                        <li>{interest}</li>
+                    {info.interests.map((interest, i) => (
+                        <li key={i}>{interest}</li>
                     ))}
                 </ol>
             </section>

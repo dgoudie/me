@@ -1,0 +1,27 @@
+.built-with {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+        margin: 12px 12px 0;
+
+        > div {
+            height: 128px;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            justify-content: space-evenly;
+            background: #efefef;
+            align-items: center;
+            border-radius: 15px;
+            padding: 16px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .grid {
+            grid-template-columns: repeat(2, auto);
+        }
+    }
+}
