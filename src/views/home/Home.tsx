@@ -21,6 +21,14 @@ class Home extends Component<{ info: Info }> {
                         <h1>{info.name}</h1>
                         <h3>{info.title}</h3>
                     </section>
+                    <section className="links">
+                        {info.links.map(link =>
+                            <div className="link">
+                                <i className={link.icon} />
+                                <a target='_blank' rel='noreferrer noopener' href={link.link}>{link.text}</a>
+                            </div>
+                        )}
+                    </section>
                     <section className="about">
                         <h2>About Me</h2>
                         {info.about.map((infoItem, i) => <p key={i}>{infoItem}</p>)}

@@ -2,6 +2,23 @@ const initialState: { info: Info } = {
     info: {
         name: `Daniel Goudie`,
         title: `Full-Stack Software Developer`,
+        links: [
+            {
+                text: '402-618-5756',
+                link: 'tel:4026185756',
+                icon: 'fas fa-phone'
+            },
+            {
+                text: 'emdgoudie@gmail.com',
+                link: 'mailto:emdgoudie@gmail.com',
+                icon: 'fas fa-envelope'
+            },
+            {
+                text: 'Daniel Goudie',
+                link: 'https://www.linkedin.com/in/daniel-goudie-817b93115/',
+                icon: 'fab fa-linkedin'
+            }
+        ],
         about: [
             `Hi! I'm a full-stack developer with both front-end and back-end 
             experience in a microservice dev-ops -based environment. I have successfully
@@ -138,7 +155,7 @@ const initialState: { info: Info } = {
             },
             {
                 icon: 'letsencrypt.png',
-                name: 'Let\'s Encrypt'  
+                name: 'Let\'s Encrypt'
             },
             {
                 icon: 'docker.png',
@@ -161,12 +178,19 @@ export default (state = initialState, action: { type: string }) => {
 export interface Info {
     name: string;
     title: string;
+    links: Link[];
     about: string[];
     education: EducationItem[];
     workExperience: WorkExperienceItem[];
     interests: string[];
     topSkills: TopSkill[];
     builtWith: BuiltWithItem[];
+}
+
+export interface Link {
+    text: string;
+    link: string;
+    icon: string;
 }
 
 export interface EducationItem {

@@ -1,4 +1,4 @@
-@import '~index.scss';
+@import "~index.scss";
 
 .home {
     display: flex;
@@ -35,10 +35,32 @@
 
     .title {
         text-align: center;
+    }
+
+    .links {
         border-bottom: 1px solid lightgray;
+        display: flex;
+        justify-content: space-between;
+
+        .link {
+            i {
+                margin-right: 4px;
+            }
+        }
     }
 
     .about p {
         margin: 1em 12px 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        .links {
+            flex-direction: column;
+            align-items: center;
+
+            .link {
+                margin-bottom: 16px;
+            }
+        }
     }
 }
