@@ -1,8 +1,11 @@
+@import '~index.scss';
+
 .home {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 8px;
+    color: $color-on-primary;
     color: var(--color-on-primary);
 
     .column-wrapper {

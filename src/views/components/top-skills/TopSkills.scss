@@ -1,3 +1,5 @@
+@import '~index.scss';
+
 .top-skills {
     ol {
         list-style-type: none;
@@ -14,6 +16,7 @@
         margin-top: 4px;
 
         &-fill {
+            background: $blue-color;
             background: var(--blue-color);
             height: 100%;
         }

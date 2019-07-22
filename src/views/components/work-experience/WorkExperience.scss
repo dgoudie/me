@@ -1,3 +1,5 @@
+@import '~index.scss';
+
 .work-experience {
     --date-width: 86px;
     --circle-diameter: 8px;
@@ -5,6 +7,15 @@
     --line-size: 2px;
     --item-spacing: 16px;
     --line-horizontal-spacing: 8px;
+}
+
+$date-width: 86px;
+$circle-diameter: 8px;
+$circle-border-size: 2px;
+$line-size: 2px;
+$item-spacing: 16px;
+$line-horizontal-spacing: 8px;
+.work-experience {
     ol {
         list-style-type: none;
         margin: 0 20px;
@@ -12,6 +23,7 @@
     }
 
     li {
+        margin: $item-spacing 0;
         margin: var(--item-spacing) 0;
         display: flex;
         align-items: center;
@@ -24,11 +36,13 @@
     }
 
     .date {
+        color: $blue-color;
         color: var(--blue-color);
         display: flex;
         justify-content: space-between;
         flex-direction: row;
         align-items: center;
+        min-width: $date-width;
         min-width: var(--date-width);
         font-size: 0.7rem;
 
@@ -45,28 +59,51 @@
             height: 1px;
             min-width: 6px;
             margin: 0 2px;
+            background: $blue-color;
             background: var(--blue-color);
         }
     }
 
     .circle {
+        min-height: $circle-diameter;
         min-height: var(--circle-diameter);
+        min-width: $circle-diameter;
         min-width: var(--circle-diameter);
+        border-radius: $circle-diameter;
         border-radius: var(--circle-diameter);
         background: transparent;
+        border: $circle-border-size solid $blue-color;
         border: var(--circle-border-size) solid var(--blue-color);
+        margin: 0 $line-horizontal-spacing;
         margin: 0 var(--line-horizontal-spacing);
     }
 
     .line {
         position: absolute;
         width: 0px;
+        border-left: $line-size solid $blue-color;
         border-left: var(--line-size) solid var(--blue-color);
+        height: calc(
+            50% +
+                calc(
+                    calc(calc(calc(#{$circle-diameter} * 0.5) + #{$circle-border-size}) * -1) +
+                        calc(#{$item-spacing} * 0.5)
+                )
+        );
         height: calc(
             50% +
                 calc(
                     calc(calc(calc(var(--circle-diameter) * 0.5) + var(--circle-border-size)) * -1) +
                         calc(var(--item-spacing) * 0.5)
+                )
+        );
+        left: calc(
+            #{$date-width} +
+                calc(
+                    calc(
+                            calc(#{$line-horizontal-spacing} + calc(#{$circle-diameter} * 0.5)) +
+                                #{$circle-border-size}
+                        ) - calc(#{$line-size} * 0.5)
                 )
         );
         left: calc(
@@ -79,10 +116,12 @@
                 )
         );
         &.down {
+            top: calc(50% + calc(#{$circle-diameter} * 0.5) + #{$circle-border-size});
             top: calc(50% + calc(var(--circle-diameter) * 0.5) + var(--circle-border-size));
         }
 
         &.up {
+            bottom: calc(50% + calc(#{$circle-diameter} * 0.5) + #{$circle-border-size});
             bottom: calc(50% + calc(var(--circle-diameter) * 0.5) + var(--circle-border-size));
         }
 

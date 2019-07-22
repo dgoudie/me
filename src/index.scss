@@ -1,23 +1,32 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
 
 html {
     --color-primary: #e1e2e3;
     --color-on-primary: #424953;
     --link-color: #005cd2;
     --link-color--active: #0048a7;
-
     --blue-color: #4eb0d6;
 }
 
+$color-primary: var(--color-primary);
+$color-on-primary: var(--color-on-primary);
+$link-color: var(--link-color);
+$link-color--active: var(--link-color--active);
+$blue-color: var(--blue-color);
+
 a {
+    color: $link-color;
     color: var(--link-color);
     text-decoration: none;
     border-bottom: 1px dotted transparent;
     &:hover {
+        border-bottom-color: $link-color;
         border-bottom-color: var(--link-color);
     }
     &:active {
+        border-bottom-color: $link-color--active;
         border-bottom-color: var(--link-color--active);
+        color: $link-color--active;
         color: var(--link-color--active);
     }
 }
@@ -31,4 +40,4 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-@import url("./button.scss");
+@import './button.scss';
