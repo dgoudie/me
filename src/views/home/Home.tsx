@@ -23,7 +23,7 @@ class Home extends Component<{ info: Info }> {
                     </section>
                     <section className="about">
                         <h2>About Me</h2>
-                        {info.about.map((infoItem, i) => (<p key={i}>{infoItem}</p>))}
+                        {info.about.map((infoItem, i) => <p key={i}>{infoItem}</p>)}
                     </section>
                     <Education />
                     <WorkExperience />

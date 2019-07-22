@@ -99,6 +99,10 @@ const initialState: { info: Info } = {
                 name: 'Sass'
             },
             {
+                icon: 'npm.png',
+                name: 'NPM'
+            },
+            {
                 icon: 'graphql.png',
                 name: 'GraphQL'
             },
@@ -109,6 +113,10 @@ const initialState: { info: Info } = {
             {
                 icon: 'spring.png',
                 name: 'Spring'
+            },
+            {
+                icon: 'mongodb.png',
+                name: 'MongoDB'
             },
             {
                 icon: 'maven.png',
@@ -125,6 +133,10 @@ const initialState: { info: Info } = {
             {
                 icon: 'nginx.png',
                 name: 'Nginx'
+            },
+            {
+                icon: 'letsencrypt.png',
+                name: 'Let\'s Encrypt'  
             },
             {
                 icon: 'docker.png',
