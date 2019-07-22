@@ -1,27 +1,28 @@
 .built-with {
     .grid {
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        grid-column-gap: 16px;
-        grid-row-gap: 16px;
-        margin: 12px 12px 0;
+        margin: 12px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
         > div {
             height: 128px;
             display: flex;
             flex-direction: column;
             margin: 0;
-            justify-content: space-evenly;
+            justify-content: space-around;
             background: #efefef;
             align-items: center;
             border-radius: 15px;
-            padding: 16px;
+            padding: 16px 0;
+            margin: 8px;
+            flex: 0 0 calc(33% - 16px);
         }
     }
 
     @media screen and (max-width: 600px) {
-        .grid {
-            grid-template-columns: repeat(2, auto);
+        .grid>div {
+            flex: 0 0 calc(50% - 16px);
         }
     }
 }

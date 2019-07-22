@@ -1,5 +1,10 @@
 .work-experience {
     --date-width: 86px;
+    --circle-diameter: 8px;
+    --circle-border-size: 2px;
+    --line-size: 2px;
+    --item-spacing: 16px;
+    --line-horizontal-spacing: 8px;
     ol {
         list-style-type: none;
         margin: 0 20px;
@@ -7,11 +12,10 @@
     }
 
     li {
-        margin: 16px 0;
+        margin: var(--item-spacing) 0;
         display: flex;
         align-items: center;
         position: relative;
-        height: 42px;
     }
 
     img {
@@ -34,7 +38,7 @@
             flex-direction: column;
             > span:not(:first-child) {
                 margin: 0;
-            }   
+            }
         }
 
         .dash {
@@ -46,26 +50,40 @@
     }
 
     .circle {
-        min-height: 8px;
-        min-width: 8px;
-        border-radius: 24px;
+        min-height: var(--circle-diameter);
+        min-width: var(--circle-diameter);
+        border-radius: var(--circle-diameter);
         background: transparent;
-        border: 2px solid var(--blue-color);
-        margin: 0 8px;
+        border: var(--circle-border-size) solid var(--blue-color);
+        margin: 0 var(--line-horizontal-spacing);
     }
 
     .line {
         position: absolute;
         width: 0px;
-        border-left: 2px solid var(--blue-color);
-        height: calc(100% + 6px);
-        left: calc(var(--date-width) + 13px);
+        border-left: var(--line-size) solid var(--blue-color);
+        height: calc(
+            50% +
+                calc(
+                    calc(calc(calc(var(--circle-diameter) * 0.5) + var(--circle-border-size)) * -1) +
+                        calc(var(--item-spacing) * 0.5)
+                )
+        );
+        left: calc(
+            var(--date-width) +
+                calc(
+                    calc(
+                            calc(var(--line-horizontal-spacing) + calc(var(--circle-diameter) * 0.5)) +
+                                var(--circle-border-size)
+                        ) - calc(var(--line-size) * 0.5)
+                )
+        );
         &.down {
-            top: calc(50% + 6px);
+            top: calc(50% + calc(var(--circle-diameter) * 0.5) + var(--circle-border-size));
         }
 
         &.up {
-            bottom: calc(50% + 6px);
+            bottom: calc(50% + calc(var(--circle-diameter) * 0.5) + var(--circle-border-size));
         }
 
         &.dotted {
@@ -80,13 +98,7 @@
         margin: 4px 0;
     }
 
-    >span {
+    > span {
         font-size: 0.8rem;
-    }
-
-    @media screen and (max-width: 600px) {
-        li {
-            height: 64px;
-        }
     }
 }

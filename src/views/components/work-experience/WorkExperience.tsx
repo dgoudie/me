@@ -25,7 +25,7 @@ class WorkExperience extends Component<{ info: Info }> {
                                     {!!workExperienceItem.endYear ? <span>{workExperienceItem.endYear}</span> : null}
                                 </div>
                             </div>
-                            {i === 0 ? <div className="line up dotted" /> : null}
+                            <div className={`line up ${i === 0 ? `dotted` : ``}`} />
                             <div className="circle" />
                             <div className={`line down ${i >= info.workExperience.length - 1 ? `dotted` : ``}`} />
                             <img src={`${process.env.PUBLIC_URL}/work-experience/${workExperienceItem.icon}`} alt="Company"/>
