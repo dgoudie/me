@@ -22,8 +22,8 @@ class Home extends Component<{ info: Info }> {
                         <h3>{info.title}</h3>
                     </section>
                     <section className="links">
-                        {info.links.map(link =>
-                            <div className="link">
+                        {info.links.map((link, i) =>
+                            <div key={i} className="link">
                                 <i className={link.icon} />
                                 <a target='_blank' rel='noreferrer noopener' href={link.link}>{link.text}</a>
                             </div>
