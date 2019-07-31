@@ -20,7 +20,8 @@
             ]
         },
         "interface-name": false,
-        "jsx-self-close": true
+        "jsx-self-close": true,
+        "jsx-no-multiline-js": false
     },
     "rulesDirectory": []
 }

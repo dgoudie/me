@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { store } from 'store';
 import App from './App';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from "react-apollo";
 
+const client = new ApolloClient({
+    uri: process.env.REACT_APP_GRAPHQL_API
+});
 ReactDOM.render(
-    <Provider store={store}>
+    <ApolloProvider client={client}>
         <App />
-    </Provider>,
+    </ApolloProvider>,
     document.getElementById(`root`));
 
 // If you want your app to work offline and load faster, you can change

@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Info } from 'reducers/info-reducer';
 
 import './WorkExperience.scss';
+import { WorkExperienceItem } from 'model/Info';
 
-class WorkExperience extends Component<{ info: Info }> {
+class WorkExperience extends Component<{ workExperience: WorkExperienceItem[] }> {
 
     public render() {
-        const { info } = this.props;
+        const { workExperience } = this.props;
         return (
             <section className="work-experience">
                 <h2>Work experience</h2>
                 <ol>
-                    {info.workExperience.map((workExperienceItem, i) => (
+                    {workExperience.map((workExperienceItem, i) => (
                         <li key={i}>
                             <div className="date">
                                 <div className="start">
@@ -27,8 +26,8 @@ class WorkExperience extends Component<{ info: Info }> {
                             </div>
                             <div className={`line up ${i === 0 ? `dotted` : ``}`} />
                             <div className="circle" />
-                            <div className={`line down ${i >= info.workExperience.length - 1 ? `dotted` : ``}`} />
-                            <img src={`${process.env.PUBLIC_URL}/work-experience/${workExperienceItem.icon}`} alt="Company"/>
+                            <div className={`line down ${i >= workExperience.length - 1 ? `dotted` : ``}`} />
+                            <img src={`${process.env.PUBLIC_URL}/work-experience/${workExperienceItem.icon}`} alt="Company" />
                             <div>
                                 <h4>{workExperienceItem.jobTitle}</h4>
                                 <span>{workExperienceItem.company}</span>
@@ -41,8 +40,4 @@ class WorkExperience extends Component<{ info: Info }> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    info: state.infoReducer.info,
-});
-
-export default connect(mapStateToProps)(WorkExperience);
+export default WorkExperience;

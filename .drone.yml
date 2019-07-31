@@ -19,6 +19,8 @@ steps:
   - "npm run build"
   environment:
     NODE_PATH: src
+    REACT_APP_GRAPHQL_API:
+      from_secret: REACT_APP_GRAPHQL_API
 - name: docker build
   image: docker
   commands:

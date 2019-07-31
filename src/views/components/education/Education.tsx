@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Info } from 'reducers/info-reducer';
 
 import './Education.scss';
+import { EducationItem } from 'model/Info';
 
-class Education extends Component<{ info: Info }> {
+class Education extends Component<{ education: EducationItem[] }> {
     public render() {
-        const { info } = this.props;
+        const { education } = this.props;
         return (
             <section className="education">
                 <h2>Education</h2>
                 <ol>
-                    {info.education.map((educationItem, i) => [
+                    {education.map((educationItem, i) => [
                         <li key={i}>
                             <div className="img-wrapper">
                                 <img src={`${process.env.PUBLIC_URL}/education/${educationItem.icon}`} alt="School Icon" />
@@ -30,8 +29,4 @@ class Education extends Component<{ info: Info }> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    info: state.infoReducer.info,
-});
-
-export default connect(mapStateToProps)(Education);
+export default Education;

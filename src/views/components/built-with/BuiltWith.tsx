@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 
 import './BuiltWith.scss';
-import { connect } from 'react-redux';
-import { Info } from 'reducers/info-reducer';
+import { BuiltWithItem } from 'model/Info';
 
-class BuiltWith extends Component<{ info: Info }> {
+class BuiltWith extends Component<{ builtWith: BuiltWithItem[] }> {
     render() {
-        const builtWith = this.props.info.builtWith;
+        const builtWith = this.props.builtWith;
         return (
             <section className="built-with">
                 <h2>Website Built and Hosted With...</h2>
@@ -23,8 +22,4 @@ class BuiltWith extends Component<{ info: Info }> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    info: state.infoReducer.info
-})
-
-export default connect(mapStateToProps)(BuiltWith);
+export default BuiltWith;

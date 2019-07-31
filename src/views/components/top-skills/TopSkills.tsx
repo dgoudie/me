@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Info } from 'reducers/info-reducer';
 
 import './TopSkills.scss';
+import { TopSkill } from 'model/Info';
 
-class TopSkills extends Component<{ info: Info }> {
+class TopSkills extends Component<{ topSkills: TopSkill[] }> {
     render() {
-        const topSkills = this.props.info.topSkills;
+        const topSkills = this.props.topSkills;
         return (
             <section className="top-skills">
                 <h2>Top Skills</h2>
@@ -25,8 +24,4 @@ class TopSkills extends Component<{ info: Info }> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    info: state.infoReducer.info,
-});
-
-export default connect(mapStateToProps)(TopSkills);
+export default TopSkills;

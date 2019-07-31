@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Info } from 'reducers/info-reducer';
 
 import './Interests.scss';
 
-class Interests extends Component<{ info: Info }> {
+class Interests extends Component<{ interests: string[] }> {
     render() {
-        const { info } = this.props;
+        const { interests } = this.props;
         return (
             <section className="interests">
                 <h2>Tech Interests</h2>
                 <ol>
-                    {info.interests.map((interest, i) => (
+                    {interests.map((interest, i) => (
                         <li key={i}>{interest}</li>
                     ))}
                 </ol>
@@ -20,8 +18,4 @@ class Interests extends Component<{ info: Info }> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    info: state.infoReducer.info
-})
-
-export default connect(mapStateToProps)(Interests);
+export default Interests;
