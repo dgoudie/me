@@ -25,7 +25,7 @@ const initialState: { info: Info } = {
             helped build and roll out multiple enterprise-wide collaboration and continuous
             integration systems. `,
             `I thrive in environments using bleeding-edge technologies,
-            and always have a number of project of my own in progress at home. I enjoy discussing
+            and always have a number of projects of my own in progress at home. I enjoy discussing
             technology with colleagues and friends.`,
         ],
         education: [
