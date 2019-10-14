@@ -37,7 +37,7 @@ class Home extends Component<{ info: Info }> {
                   )}
                 </section>
                 <section className="about">
-                  <h2>About Me</h2>
+                  <h2>About Me PJ Test</h2>
                   {info.about.map((infoItem, i) => <p key={i}>{infoItem}</p>)}
                 </section>
                 <Education education={info.education} />
