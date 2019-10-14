@@ -1,18 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 import './index.scss';
+
 import * as serviceWorker from './serviceWorker';
+
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from "react-apollo";
+import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const client = new ApolloClient({
-    uri: process.env.REACT_APP_GRAPHQL_API
+    uri: process.env.REACT_APP_GRAPHQL_API,
 });
 ReactDOM.render(
+    (
     <ApolloProvider client={client}>
         <App />
-    </ApolloProvider>,
+    </ApolloProvider>
+    ),
     document.getElementById(`root`));
 
 // If you want your app to work offline and load faster, you can change
