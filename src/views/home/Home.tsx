@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-
-import Education from 'views/components/education/Education';
-import WorkExperience from 'views/components/work-experience/WorkExperience';
-
-import BuiltWith from 'views/components/built-with/BuiltWith';
-import Interests from 'views/components/interests/Interests';
-import TopSkills from 'views/components/top-skills/TopSkills';
 import './Home.scss';
 
 import { ApolloError, gql } from "apollo-boost";
+import React, { Component } from 'react';
+
+import BuiltWith from 'views/components/built-with/BuiltWith';
+import Education from 'views/components/education/Education';
 import { Info } from 'model/Info';
+import Interests from 'views/components/interests/Interests';
+import Loader from 'views/components/loader/Loader';
 import { Query } from 'react-apollo';
+import TopSkills from 'views/components/top-skills/TopSkills';
+import WorkExperience from 'views/components/work-experience/WorkExperience';
 
 class Home extends Component<{ info: Info }> {
 
@@ -18,7 +18,7 @@ class Home extends Component<{ info: Info }> {
     return (
       <Query query={infoQuery}>
         {({ loading, error, data }: { loading: boolean, error?: ApolloError, data: { info: Info } }) => {
-          if (loading) { return <div />; }
+          if (loading) { return <Loader />; }
           if (error) { return <p>Error :(</p>; }
           const { info } = data;
           return (
