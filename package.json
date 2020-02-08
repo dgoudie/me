@@ -22,7 +22,8 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "start": "cross-env NODE_PATH=src react-scripts start",
+    "start": "cross-env PROXY=https://me-api.stan.systems react-scripts start",
+    "start:local": "cross-env PROXY=http://localhost:8080 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -30,7 +31,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "https://me-api.stan.systems",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
+    "http-proxy-middleware": "^0.20.0",
     "tslint": "^5.20.0",
     "tslint-react": "^4.1.0"
   }

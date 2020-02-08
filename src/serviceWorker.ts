@@ -54,7 +54,13 @@ export function register(config: any) {
   }
 }
 
-function registerValidSW(swUrl: any, config: { onUpdate: (arg0: ServiceWorkerRegistration) => void; onSuccess: (arg0: ServiceWorkerRegistration) => void; }) {
+function registerValidSW(
+  swUrl: any,
+  config: {
+    onUpdate: (arg0: ServiceWorkerRegistration) => void;
+    onSuccess: (arg0: ServiceWorkerRegistration) => void;
+  }
+) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
