@@ -63,6 +63,7 @@ $line-horizontal-spacing: 8px;
       margin: 0 2px;
       background: $blue-color;
       background: var(--blue-color);
+      -webkit-print-color-adjust: exact;
     }
   }
 
