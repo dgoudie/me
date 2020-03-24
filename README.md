@@ -1,4 +1,4 @@
-[![Build Status](https://drone.stan.systems/api/badges/dgoudie/me/status.svg?ref=refs/heads/master)](https://drone.stan.systems/dgoudie/me)
+[![Build Status](https://drone.goudie.dev/api/badges/dgoudie/me/status.svg?ref=refs/heads/master)](https://drone.goudie.dev/dgoudie/me)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

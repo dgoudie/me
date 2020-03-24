@@ -22,7 +22,7 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "start": "cross-env PROXY=https://me-api.stan.systems react-scripts start",
+    "start": "cross-env PROXY=https://me-api.goudie.dev react-scripts start",
     "start:local": "cross-env PROXY=http://localhost:8080 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

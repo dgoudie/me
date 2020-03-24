@@ -85,8 +85,8 @@ class Home extends Component<
                   }`}
                 >
                   This page was exported from my website at{' '}
-                  <code>https://stan.systems</code>. Stop on by to see what I
-                  used built it.
+                  <code>https://goudie.dev</code>. Stop on by to see what I used
+                  built it.
                 </span>
                 <PrintCopyButton onClick={this._printCopyButtonOnClick} />
               </div>
