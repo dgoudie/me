@@ -1,13 +1,17 @@
+import './WorkExperience.scss';
+
 import React, { Component } from 'react';
 
-import './WorkExperience.scss';
 import { WorkExperienceItem } from 'model/Info';
 
 class WorkExperience extends Component<{
   workExperience: WorkExperienceItem[];
 }> {
   public render() {
-    const { workExperience } = this.props;
+    let { workExperience } = this.props;
+    workExperience = workExperience.sort(
+      (we1, we2) => we2.startYear - we1.startYear
+    );
     return (
       <section className="work-experience">
         <h2>Work experience</h2>
