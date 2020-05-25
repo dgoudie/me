@@ -53,7 +53,13 @@ export default class PersonalInfo extends Component<Props, {}> {
             <ul>
               {this.props.info.topSkills.map((skill) => (
                 <li>
-                  <div className={styles.skillName}>{skill.name}</div>
+                  <div>{skill.name}</div>
+                  <div className={styles.skillPercentageBar}>
+                    <div
+                      className={styles.skillPercentageBarFill}
+                      style={{ width: `${skill.percentage}%` }}
+                    />
+                  </div>
                 </li>
               ))}
             </ul>
