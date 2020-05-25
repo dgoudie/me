@@ -1,0 +1,45 @@
+@import '~index.scss';
+.root {
+  background-color: var(--color-primary-dark);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-bottom: 36px;
+}
+
+.dummyImageBlock {
+  margin-top: 100%;
+}
+
+.image {
+  position: relative;
+  display: flex;
+  margin: 36px;
+}
+
+.imageInner {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10000px;
+}
+
+.name {
+  font-family: 'PT Serif', serif;
+  text-align: center;
+  margin: 0 36px;
+}
+
+.title {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin: 0 36px;
+}

@@ -1,0 +1,19 @@
+@import '~index.scss';
+
+.root {
+  display: flex;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.personalInfo {
+  flex: 1;
+  color: var(--color-on-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.supplementalInfo {
+  flex: 1.2;
+}
