@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { faAddressBook, faUser } from '@fortawesome/free-solid-svg-icons';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ImageAndName from 'components/image-and-name/ImageAndName';
 import { Info } from 'model/Info';
 import styles from './PersonalInfo.module.scss';
@@ -23,21 +21,42 @@ export default class PersonalInfo extends Component<Props, {}> {
         <div className={styles.info}>
           <section>
             <h3>
-              <FontAwesomeIcon icon={faUser} />
+              <i className="fas fa-user"></i>
               <span>about me</span>
             </h3>
             {this.props.info.about.map((item) => (
               <p>{item}</p>
             ))}
           </section>
-          <section>
+          <section className={styles.contact}>
             <h3>
-              <FontAwesomeIcon icon={faAddressBook} />
+              <i className="fas fa-address-book"></i>
               <span>contact me</span>
             </h3>
-            {this.props.info.about.map((item) => (
-              <p>{item}</p>
-            ))}
+            <ul>
+              {this.props.info.links.map((link) => (
+                <li>
+                  <i className={link.icon}></i>
+                  <a href={link.link} className={styles.noPrint}>
+                    {link.text}
+                  </a>
+                  <span className={styles.print}>{link.textForPrint}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className={styles.topSkills}>
+            <h3>
+              <i className="fas fa-palette"></i>
+              <span>top skills</span>
+            </h3>
+            <ul>
+              {this.props.info.topSkills.map((skill) => (
+                <li>
+                  <div className={styles.skillName}>{skill.name}</div>
+                </li>
+              ))}
+            </ul>
           </section>
         </div>
       </div>

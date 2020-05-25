@@ -1,5 +1,27 @@
 @import '~index.scss';
 
+@mixin icon {
+  border-radius: 10000px;
+  padding: 10px;
+  margin-right: 12px;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  text-align: center;
+}
+
+@mixin list {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      margin: 18px 0;
+    }
+  }
+}
+
 .imageAndName {
   > * {
     width: 320px;
@@ -21,16 +43,53 @@
     h3 {
       display: flex;
       align-items: center;
-      svg {
+      i {
+        @include icon;
         background: var(--color-primary-dark);
-        border-radius: 10000px;
-        padding: 10px;
-        margin-right: 12px;
       }
       span {
         text-transform: uppercase;
         font-weight: 300;
       }
     }
+  }
+}
+
+.contact {
+  @include list;
+  ul {
+    li {
+      i {
+        @include icon;
+        color: var(--color-primary);
+        background-color: var(--color-on-primary);
+      }
+
+      a {
+        color: var(--link-color);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.topSkills {
+  @include list;
+}
+
+.print {
+  display: none;
+}
+
+@media print {
+  .print {
+    display: initial;
+  }
+  .noPrint {
+    display: none;
   }
 }
