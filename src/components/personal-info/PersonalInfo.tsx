@@ -1,7 +1,8 @@
+import { Info, TopSkill } from 'model/Info';
 import React, { Component } from 'react';
 
 import ImageAndName from 'components/image-and-name/ImageAndName';
-import { Info } from 'model/Info';
+import sort from 'fast-sort';
 import styles from './PersonalInfo.module.scss';
 
 interface Props {
@@ -11,6 +12,10 @@ interface Props {
 
 export default class PersonalInfo extends Component<Props, {}> {
   render() {
+    const topSkills: TopSkill[] = sort(this.props.info.topSkills).by([
+      { desc: (skill: TopSkill) => skill.percentage },
+      { asc: (skill: TopSkill) => skill.name },
+    ]);
     return (
       <div className={this.props.className}>
         <ImageAndName
@@ -51,7 +56,7 @@ export default class PersonalInfo extends Component<Props, {}> {
               <span>top skills</span>
             </h3>
             <ul>
-              {this.props.info.topSkills.map((skill) => (
+              {topSkills.map((skill) => (
                 <li>
                   <div>{skill.name}</div>
                   <div className={styles.skillPercentageBar}>
