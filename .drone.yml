@@ -7,7 +7,7 @@ steps:
     commands:
       - npm set registry https://$${NEXUS_NPM_REPO}/
       - npm set //$${NEXUS_NPM_REPO}/:_authToken=$${NPM_TOKEN}
-      - npm ci --only=production
+      - npm ci
     environment:
       NEXUS_NPM_REPO:
         from_secret: NEXUS_NPM_REPO
