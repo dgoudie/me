@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Info } from '@stan/me-types';
 import PersonalInfo from 'components/personal-info/PersonalInfo';
 import { Query } from 'react-apollo';
+import ServerErrorPage from './server-error-page/ServerErrorPage';
 import SupplementalInfo from 'components/supplemental-info/SupplementalInfo';
 import styles from './Home.module.scss';
 
@@ -35,7 +36,7 @@ class Home extends Component<
             return <div />;
           }
           if (error) {
-            return <p>Error :(</p>;
+            return <ServerErrorPage error={error} />;
           }
           return (
             <div className={styles.root}>

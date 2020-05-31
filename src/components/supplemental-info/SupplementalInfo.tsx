@@ -79,8 +79,9 @@ export default class SupplementalInfo extends Component<Props, {}> {
                   <h4>{bwi.name}</h4>
                   {!!bwi.links?.length && (
                     <div className={styles.builtWithLinks}>
-                      {bwi.links.map((link) => (
+                      {bwi.links.map((link, i) => (
                         <a
+                          key={i}
                           target="_blank"
                           rel="noopener noreferrer"
                           href={link.url}

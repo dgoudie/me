@@ -4,6 +4,7 @@ import { Subscription, fromEvent } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
 import ImageAndName from 'components/image-and-name/ImageAndName';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import sort from 'fast-sort';
 import styles from './PersonalInfo.module.scss';
 
@@ -14,7 +15,6 @@ interface Props {
 
 interface State {
   headerVisible: boolean;
-  headerExiting: boolean;
 }
 
 export default class PersonalInfo extends Component<Props, State> {
@@ -23,7 +23,6 @@ export default class PersonalInfo extends Component<Props, State> {
 
   state = {
     headerVisible: false,
-    headerExiting: false,
   };
 
   render() {
@@ -87,24 +86,29 @@ export default class PersonalInfo extends Component<Props, State> {
             </section>
           </div>
         </div>
-        {!!this.state.headerVisible && (
-          <header
-            className={`${styles.header}${
-              this.state.headerExiting ? ` ${styles.headerExiting}` : ''
-            }`}
-          >
-            <section>
-              <div>
-                <img
-                  src="https://cdn.goudie.dev/images/daniel.jpg"
-                  alt="Daniel Goudie"
-                />
-                <h3>{this.props.info.name}</h3>
-              </div>
-            </section>
-            <section></section>
-          </header>
-        )}
+        <ReactCSSTransitionGroup
+          transitionName={{
+            enter: styles.headerEnter,
+            leave: styles.headerLeave,
+          }}
+          transitionEnterTimeout={0}
+          transitionLeaveTimeout={0}
+        >
+          {!!this.state.headerVisible && (
+            <header className={styles.header} key="Header">
+              <section>
+                <div>
+                  <img
+                    src="https://cdn.goudie.dev/images/daniel.jpg"
+                    alt="Daniel Goudie"
+                  />
+                  <h3>{this.props.info.name}</h3>
+                </div>
+              </section>
+              <section></section>
+            </header>
+          )}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }
@@ -117,18 +121,7 @@ export default class PersonalInfo extends Component<Props, State> {
           map(() => current.getBoundingClientRect().top <= 56),
           distinctUntilChanged()
         )
-        .subscribe((stuck) => {
-          if (stuck) {
-            this.setState({ headerVisible: true });
-          } else {
-            this.setState({ headerExiting: true });
-            setTimeout(
-              () =>
-                this.setState({ headerVisible: false, headerExiting: false }),
-              180
-            );
-          }
-        });
+        .subscribe((stuck) => this.setState({ headerVisible: stuck }));
     }
   }
 

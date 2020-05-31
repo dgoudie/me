@@ -15,6 +15,7 @@
     "moment": "^2.26.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-apollo": "^3.1.5",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "@stan/me-types": "0.0.6",
+    "@types/react-addons-css-transition-group": "^15.0.5",
     "cross-env": "^6.0.3",
     "http-proxy-middleware": "^0.20.0",
     "tslint": "^5.20.1",

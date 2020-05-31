@@ -1,0 +1,16 @@
+.root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-dark);
+  padding: 0 24px;
+  color: var(--color-on-primary);
+
+  h1 {
+    i {
+      margin-right: 12px;
+    }
+  }
+}
