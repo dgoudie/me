@@ -41,6 +41,16 @@
   }
 
   .supplementalInfo {
-    padding-bottom: 48px;
+    padding-bottom: 64px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .supplementalInfo {
+    background: var(--secondary-info-background-dark);
+  }
+  .scrollToTopButton {
+    background: white;
+    color: var(--color-primary-dark);
   }
 }

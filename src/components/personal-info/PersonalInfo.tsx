@@ -57,7 +57,12 @@ export default class PersonalInfo extends Component<Props, State> {
                 {this.props.info.links.map((link, i) => (
                   <li key={i}>
                     <i className={link.faIcon}></i>
-                    <a href={link.link} className={styles.noPrint}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={link.link}
+                      className={styles.noPrint}
+                    >
                       {link.text}
                     </a>
                     <span className={styles.print}>{link.textForPrint}</span>
