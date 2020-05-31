@@ -12,6 +12,7 @@
     "apollo-boost": "^0.4.9",
     "fast-sort": "^1.6.0",
     "graphql": "^14.6.0",
+    "moment": "^2.26.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
@@ -19,6 +20,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "rxjs": "^6.5.5",
     "typescript": "^3.9.3"
   },
   "scripts": {
@@ -46,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@stan/me-types": "0.0.6",
     "cross-env": "^6.0.3",
     "http-proxy-middleware": "^0.20.0",
     "tslint": "^5.20.1",

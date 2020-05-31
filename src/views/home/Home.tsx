@@ -1,7 +1,7 @@
 import { ApolloError, gql } from 'apollo-boost';
 import React, { Component } from 'react';
 
-import { Info } from 'model/Info';
+import { Info } from '@stan/me-types';
 import PersonalInfo from 'components/personal-info/PersonalInfo';
 import { Query } from 'react-apollo';
 import SupplementalInfo from 'components/supplemental-info/SupplementalInfo';
@@ -40,7 +40,10 @@ class Home extends Component<
           return (
             <div className={styles.root}>
               <PersonalInfo info={data.info} className={styles.personalInfo} />
-              <SupplementalInfo className={styles.supplementalInfo} />
+              <SupplementalInfo
+                info={data.info}
+                className={styles.supplementalInfo}
+              />
             </div>
           );
         }}
@@ -58,22 +61,21 @@ const infoQuery = gql`
         text
         textForPrint
         link
-        icon
+        faIcon
       }
       about
       education {
-        icon
+        iconUrl
         title
         secondaryInfo
       }
       workExperience {
-        icon
+        iconUrl
         company
         jobTitle
-        startMonth
-        startYear
-        endMonth
-        endYear
+        startDate
+        endDate
+        description
       }
       interests
       topSkills {
@@ -81,9 +83,12 @@ const infoQuery = gql`
         percentage
       }
       builtWith {
-        icon
+        iconUrl
         name
-        link
+        links {
+          text
+          url
+        }
       }
     }
   }

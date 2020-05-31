@@ -2,12 +2,24 @@
 
 html {
   --color-primary: #3d484e;
-  --color-on-primary: white;
   --color-primary-dark: #283136;
-  --link-color: lightblue;
+  --color-on-primary: white;
+  --color-on-primary-light: #888;
+  --link-color: #607f8a;
+  --link-color-on-dark: #add8e6;
 }
 
 body {
   margin: 0;
   font-family: 'Maven Pro', sans-serif;
+}
+
+@mixin icon {
+  border-radius: 10000px;
+  padding: 10px;
+  margin-right: 12px;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  text-align: center;
 }
