@@ -45,6 +45,13 @@ class Home extends Component<
                 info={data.info}
                 className={styles.supplementalInfo}
               />
+              <button
+                className={styles.scrollToTopButton}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                title="Scroll to top"
+              >
+                <i className="fas fa-chevron-up" />
+              </button>
             </div>
           );
         }}

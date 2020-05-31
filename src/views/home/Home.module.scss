@@ -15,5 +15,32 @@
 }
 
 .supplementalInfo {
+  padding: 1em 0 0.1px;
+  background-color: white;
   flex: 1.2;
+}
+
+.scrollToTopButton {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  height: 48px;
+  width: 48px;
+  border-radius: 10000px;
+  border: none;
+  background: var(--color-primary-dark);
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    display: block;
+    margin: 0;
+  }
+
+  .supplementalInfo {
+    padding-bottom: 48px;
+  }
 }

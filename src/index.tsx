@@ -9,9 +9,13 @@ import { ApolloProvider } from 'react-apollo';
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import smoothscroll from 'smoothscroll-polyfill';
+
+// kick off the polyfill!
+smoothscroll.polyfill();
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_API
+  uri: process.env.REACT_APP_GRAPHQL_API,
 });
 ReactDOM.render(
   <ApolloProvider client={client}>

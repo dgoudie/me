@@ -132,6 +132,31 @@
   display: none;
 }
 
+@media screen and (max-width: 600px) {
+  .imageAndName {
+    > * {
+      width: auto;
+    }
+  }
+
+  .header {
+    section {
+      &:first-child {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 12px;
+        div {
+          width: auto;
+        }
+      }
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+}
+
 @media print {
   .print {
     display: initial;
