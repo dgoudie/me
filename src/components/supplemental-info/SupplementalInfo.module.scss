@@ -45,7 +45,7 @@
     }
     h5 {
       margin: 4px 0;
-      font-size: 0.9rem;
+      font-size: 90%;
       font-weight: 500;
     }
   }
@@ -60,7 +60,7 @@
   h5 {
     display: block;
     margin: 4px 0 4px -8px;
-    font-size: 0.9rem;
+    font-size: 90%;
     font-weight: 400;
     color: var(--color-primary);
     i {
@@ -176,5 +176,34 @@
     a {
       color: var(--link-color-on-dark);
     }
+  }
+}
+
+@media print {
+  .inner {
+    section {
+      h3 {
+        color: black;
+      }
+    }
+  }
+  .education {
+    color: black;
+  }
+  .workExperience {
+    h4 {
+      color: black;
+    }
+    h5 {
+      opacity: 0.5;
+      color: black;
+    }
+
+    p {
+      color: black;
+    }
+  }
+  .builtWith {
+    display: none;
   }
 }

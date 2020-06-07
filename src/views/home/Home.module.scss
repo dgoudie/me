@@ -54,3 +54,13 @@
     color: var(--color-primary-dark);
   }
 }
+
+@media print {
+  .supplementalInfo {
+    background-color: white;
+    font-size: 1.3rem;
+  }
+  .scrollToTopButton {
+    display: none;
+  }
+}

@@ -171,15 +171,6 @@
   }
 }
 
-@media print {
-  .print {
-    display: initial;
-  }
-  .noPrint {
-    display: none;
-  }
-}
-
 @keyframes fadeIn {
   from {
     top: -56px;
@@ -195,5 +186,34 @@
   }
   to {
     top: -56px;
+  }
+}
+
+@media print {
+  .info {
+    background: var(--print-background-light);
+    color: var(--color-primary-dark);
+    font-size: 1.2rem;
+  }
+  .sectionWrapper {
+    section {
+      h3 {
+        i {
+          color: white;
+        }
+      }
+    }
+  }
+  .skillPercentageBarFill {
+    background: var(--color-primary-dark);
+  }
+  .header {
+    display: none;
+  }
+  .print {
+    display: initial;
+  }
+  .noPrint {
+    display: none;
   }
 }

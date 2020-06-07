@@ -95,6 +95,7 @@ export default class SupplementalInfo extends Component<Props, {}> {
               ))}
             </ul>
           </section>
+          <section></section>
         </div>
       </div>
     );

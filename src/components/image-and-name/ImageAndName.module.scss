@@ -53,3 +53,21 @@
     margin: 36px 100px;
   }
 }
+
+@media print {
+  .root {
+    background: var(--print-background-dark);
+    color: var(--color-primary-dark);
+  }
+  .image {
+    margin: 18px 36px;
+  }
+  .dummyImageBlock {
+    margin-top: 50%;
+  }
+
+  .imageInner {
+    left: 80px;
+    right: 80px;
+  }
+}

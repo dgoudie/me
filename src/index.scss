@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600&family=PT+Serif&display=swap');
 
 html {
+  -webkit-print-color-adjust: exact;
   --color-primary: #3d484e;
   --color-primary-dark: #283136;
   --color-on-primary: white;
@@ -9,6 +10,8 @@ html {
   --link-color-on-dark: #add8e6;
   --secondary-info-background: white;
   --secondary-info-background-dark: #242c30;
+  --print-background-dark: #ddd;
+  --print-background-light: #efefef;
 
   background: var(--color-primary-dark);
 }

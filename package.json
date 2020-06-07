@@ -5,7 +5,7 @@
   "dependencies": {
     "@stan/me-types": "0.0.6",
     "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.42",
+    "@types/node": "^12.12.44",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
@@ -24,7 +24,7 @@
     "react-scripts": "^3.4.1",
     "rxjs": "^6.5.5",
     "smoothscroll-polyfill": "^0.4.4",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.5"
   },
   "scripts": {
     "start": "cross-env PROXY=https://me-api.goudie.dev react-scripts start",
