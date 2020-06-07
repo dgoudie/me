@@ -63,7 +63,17 @@
     font-size: 90%;
     font-weight: 400;
     color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
     i {
+      margin: 0 8px;
+    }
+    span {
+      display: inline-flex;
+      align-items: center;
+    }
+    img {
+      width: 18px;
       margin: 0 8px;
     }
   }
@@ -157,8 +167,7 @@
       color: white;
     }
     h5 {
-      opacity: 0.5;
-      color: var(--color-on-primary);
+      color: var(--color-on-primary-light);
     }
 
     p {
@@ -193,10 +202,10 @@
   .workExperience {
     h4 {
       color: black;
+      font-size: 110%;
     }
     h5 {
-      opacity: 0.5;
-      color: black;
+      color: var(--color-on-primary-light);
     }
 
     p {

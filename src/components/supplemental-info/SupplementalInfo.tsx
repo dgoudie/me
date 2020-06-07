@@ -49,7 +49,7 @@ export default class SupplementalInfo extends Component<Props, {}> {
                   <h4>{wei.jobTitle}</h4>
                   <h5>
                     <span>
-                      <i className="fas fa-briefcase"></i>
+                      <img src={wei.iconUrl} alt={wei.company} />
                       {wei.company}
                     </span>
                     <span>
