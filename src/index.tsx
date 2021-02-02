@@ -4,8 +4,8 @@ import './index.scss';
 
 import * as serviceWorker from './serviceWorker';
 
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,6 +16,7 @@ smoothscroll.polyfill();
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_API,
+  cache: new InMemoryCache(),
 });
 ReactDOM.render(
   <ApolloProvider client={client}>

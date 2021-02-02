@@ -26,7 +26,7 @@ export default class PersonalInfo extends Component<Props, State> {
   };
 
   render() {
-    const topSkills: TopSkillItem[] = sort(this.props.info.topSkills).by([
+    const topSkills: TopSkillItem[] = sort([...this.props.info.topSkills]).by([
       { desc: (skill: TopSkillItem) => skill.percentage },
       { asc: (skill: TopSkillItem) => skill.name },
     ]);

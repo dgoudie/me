@@ -1,63 +1,33 @@
-import { ApolloError, gql } from 'apollo-boost';
-import React, { Component } from 'react';
+import { gql, useQuery } from '@apollo/client';
 
 import { Info } from '@stan/me-types';
 import PersonalInfo from 'components/personal-info/PersonalInfo';
-import { Query } from 'react-apollo';
+import React from 'react';
 import ServerErrorPage from './server-error-page/ServerErrorPage';
 import SupplementalInfo from 'components/supplemental-info/SupplementalInfo';
 import styles from './Home.module.scss';
 
-class Home extends Component<
-  { info: Info },
-  { printCopyButtonPressed: boolean }
-> {
-  state = {
-    printCopyButtonPressed: false,
-  };
-
-  public render() {
-    const { printCopyButtonPressed } = this.state;
-    if (printCopyButtonPressed) {
-      setTimeout(() => window.print(), 500);
-    }
-    return (
-      <Query query={infoQuery}>
-        {({
-          loading,
-          error,
-          data,
-        }: {
-          loading: boolean;
-          error?: ApolloError;
-          data: { info: Info };
-        }) => {
-          if (loading) {
-            return <div />;
-          }
-          if (error) {
-            return <ServerErrorPage error={error} />;
-          }
-          return (
-            <div className={styles.root}>
-              <PersonalInfo info={data.info} className={styles.personalInfo} />
-              <SupplementalInfo
-                info={data.info}
-                className={styles.supplementalInfo}
-              />
-              <button
-                className={styles.scrollToTopButton}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                title="Scroll to top"
-              >
-                <i className="fas fa-chevron-up" />
-              </button>
-            </div>
-          );
-        }}
-      </Query>
-    );
+export default function Home() {
+  const { loading, error, data } = useQuery<{ info: Info }>(infoQuery);
+  if (loading) {
+    return <div />;
   }
+  if (error || !data) {
+    return <ServerErrorPage error={error} />;
+  }
+  return (
+    <div className={styles.root}>
+      <PersonalInfo info={data.info} className={styles.personalInfo} />
+      <SupplementalInfo info={data.info} className={styles.supplementalInfo} />
+      <button
+        className={styles.scrollToTopButton}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        title="Scroll to top"
+      >
+        <i className="fas fa-chevron-up" />
+      </button>
+    </div>
+  );
 }
 
 const infoQuery = gql`
@@ -70,6 +40,7 @@ const infoQuery = gql`
         textForPrint
         link
         faIcon
+        name
       }
       about
       education {
@@ -101,5 +72,3 @@ const infoQuery = gql`
     }
   }
 `;
-
-export default Home;
