@@ -90,7 +90,7 @@
   z-index: 1;
   position: fixed;
   height: 56px;
-  top: 0;
+  top: -56px;
   left: 0;
   right: 0;
   background: var(--color-primary-dark);
@@ -126,8 +126,16 @@
   animation: fadeIn 210ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.headerLeave {
+.headerEnterDone {
+  top: 0;
+}
+
+.headerExit {
   animation: fadeOut 210ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.headerExitDone {
+  top: -56px;
 }
 .print {
   display: none;

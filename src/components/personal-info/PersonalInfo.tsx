@@ -1,10 +1,11 @@
 import { Info, TopSkillItem } from '@stan/me-types';
 import React, { Component } from 'react';
 import { Subscription, fromEvent } from 'rxjs';
-import { distinctUntilChanged, map } from 'rxjs/operators';
+import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
 
+import { CSSTransition } from 'react-transition-group';
 import ImageAndName from 'components/image-and-name/ImageAndName';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import classnames from 'classnames';
 import sort from 'fast-sort';
 import styles from './PersonalInfo.module.scss';
 
@@ -91,29 +92,29 @@ export default class PersonalInfo extends Component<Props, State> {
             </section>
           </div>
         </div>
-        <ReactCSSTransitionGroup
-          transitionName={{
+        <CSSTransition
+          in={this.state.headerVisible}
+          classNames={{
             enter: styles.headerEnter,
-            leave: styles.headerLeave,
+            exit: styles.headerExit,
+            enterDone: styles.headerEnterDone,
+            exitDone: styles.headerExitDone,
           }}
-          transitionEnterTimeout={0}
-          transitionLeaveTimeout={0}
+          timeout={200}
         >
-          {!!this.state.headerVisible && (
-            <header className={styles.header} key="Header">
-              <section>
-                <div>
-                  <img
-                    src="https://cdn.goudie.dev/images/daniel.jpg"
-                    alt="Daniel Goudie"
-                  />
-                  <h3>{this.props.info.name}</h3>
-                </div>
-              </section>
-              <section></section>
-            </header>
-          )}
-        </ReactCSSTransitionGroup>
+          <header className={classnames(styles.header)} key="Header">
+            <section>
+              <div>
+                <img
+                  src="https://cdn.goudie.dev/images/daniel.jpg"
+                  alt="Daniel Goudie"
+                />
+                <h3>{this.props.info.name}</h3>
+              </div>
+            </section>
+            <section></section>
+          </header>
+        </CSSTransition>
       </div>
     );
   }
@@ -124,7 +125,8 @@ export default class PersonalInfo extends Component<Props, State> {
       this.stickySubscription = fromEvent(document, 'scroll')
         .pipe(
           map(() => current.getBoundingClientRect().top <= 56),
-          distinctUntilChanged()
+          distinctUntilChanged(),
+          startWith(false)
         )
         .subscribe((stuck) => this.setState({ headerVisible: stuck }));
     }
