@@ -1,0 +1,50 @@
+.dialog {
+  overflow-y: auto;
+  max-height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
+.dialogHeader {
+  margin: 6% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &ImageWrapper {
+    width: 48px;
+    height: 48px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  span {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+}
+.dialogBody {
+  p {
+    margin: 1em;
+    line-height: 1.5;
+  }
+}
+.loading {
+  text-align: center;
+  display: block;
+  margin: 24px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .dialogBody {
+    p {
+      margin: 1em;
+      line-height: 1.35;
+    }
+  }
+}

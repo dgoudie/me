@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { Info } from '@stan/me-types';
+import WebsiteStack from 'components/website-stack/WebsiteStack';
 import moment from 'moment';
 import styles from './SupplementalInfo.module.scss';
 
@@ -65,35 +66,20 @@ export default class SupplementalInfo extends Component<Props, {}> {
               ))}
             </ul>
           </section>
-          <section className={styles.builtWith}>
+          <section className={styles.websiteStack}>
             <h3>
               <i className="fas fa-server"></i>
-              <span>website built and hosted with...</span>
+              <span>this website's tech-stack</span>
             </h3>
-            <ul>
-              {this.props.info.builtWith.map((bwi, i) => (
-                <li key={i}>
-                  <div className={styles.imgWrapper}>
-                    <img src={bwi.iconUrl} alt={bwi.name} />
-                  </div>
-                  <h4>{bwi.name}</h4>
-                  {!!bwi.links?.length && (
-                    <div className={styles.builtWithLinks}>
-                      {bwi.links.map((link, i) => (
-                        <a
-                          key={i}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={link.url}
-                        >
-                          {link.text}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <h6>
+              I run a full web stack from my house (on which this website is
+              hosted). Below is a graph representing the components and tools
+              this website relies on.
+            </h6>
+            <h6>Click or tap on an item to learn more about its usage</h6>
+            <WebsiteStack
+              websiteStackElements={this.props.info.websiteStackElements}
+            />
           </section>
           <section></section>
         </div>

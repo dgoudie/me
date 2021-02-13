@@ -4,10 +4,11 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.3.7",
-    "@stan/me-types": "^1.0.1",
+    "@brainhubeu/react-carousel": "^1.19.26",
+    "@stan/me-types": "^3.0.0-beta.13",
     "@types/jest": "^25.2.3",
-    "@types/node": "^14.14.22",
-    "@types/react": "^16.14.2",
+    "@types/node": "^14.14.24",
+    "@types/react": "^16.14.3",
     "@types/react-dom": "^16.9.10",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
@@ -17,15 +18,16 @@
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
-    "react-addons-css-transition-group": "^15.6.2",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.14.0",
+    "react-flow-renderer": "^8.7.0",
+    "react-resize-detector": "^6.4.0-rc.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
     "react-transition-group": "^4.4.1",
     "rxjs": "^6.6.3",
     "smoothscroll-polyfill": "^0.4.4",
-    "typescript": "^3.9.7"
+    "typescript": "^4.1.0"
   },
   "scripts": {
     "start": "cross-env PROXY=https://me-api.goudie.dev react-scripts start",

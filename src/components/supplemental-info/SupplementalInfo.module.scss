@@ -32,6 +32,11 @@
         font-weight: 300;
       }
     }
+    h6 {
+      font-weight: 400;
+      margin-top: -18px;
+      font-size: 0.9rem;
+    }
   }
 }
 
@@ -175,15 +180,9 @@
     }
   }
 
-  .builtWith {
-    li {
-      background: var(--color-primary);
-      color: var(--color-on-primary);
-    }
-  }
-  .builtWithLinks {
-    a {
-      color: var(--link-color-on-dark);
+  .websiteStack {
+    h6 {
+      color: var(--color-on-primary-light);
     }
   }
 }
