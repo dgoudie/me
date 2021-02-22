@@ -15,7 +15,7 @@ export default function ImageAndName(props: {
         <div
           className={styles.imageInner}
           style={{
-            backgroundImage: `url(https://cdn.goudie.dev/images/daniel.jpg)`,
+            backgroundImage: `url(https://cdn.goudie.dev/images/me/daniel.jpg)`,
           }}
         ></div>
       </div>

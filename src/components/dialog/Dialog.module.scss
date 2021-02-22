@@ -20,9 +20,8 @@
     animation: bodyFade 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
     position: fixed;
     top: calc(calc(calc(100vh - 800px) / 2) + 46px);
-    bottom: calc(calc(100vh - 800px) / 2);
-    right: calc(calc(100vw - 600px) / 2);
-    left: calc(calc(100vw - 600px) / 2);
+    right: calc(calc(100vw - 700px) / 2);
+    left: calc(calc(100vw - 700px) / 2);
     background: white;
     border-radius: 5px;
   }
@@ -60,8 +59,8 @@
 @media screen and (max-width: 650px) {
   .dialog {
     .dialogBody {
-      right: 18px;
-      left: 18px;
+      right: 12px;
+      left: 12px;
     }
   }
 }

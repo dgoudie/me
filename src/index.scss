@@ -34,3 +34,20 @@ body {
     overflow: hidden;
   }
 }
+
+code {
+  border: 1px solid #888;
+  background-color: darken(white, 15%);
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  code {
+    border: 1px solid #666;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 5px;
+    padding: 1px 6px;
+  }
+}

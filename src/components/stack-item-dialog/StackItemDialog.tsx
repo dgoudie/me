@@ -5,7 +5,9 @@ import Dialog from 'components/dialog/Dialog';
 import { HomePageParams } from 'App';
 import React from 'react';
 import ServerErrorPage from 'views/home/server-error-page/ServerErrorPage';
+import StackItemImageCarousel from 'components/stack-item-image-carousel/StackItemImageCarousel';
 import { WebsiteStackItemInfo } from '@stan/me-types';
+import reactStringReplace from 'react-string-replace';
 import styles from './StackItemDialog.module.scss';
 
 export default function StackItemDialog() {
@@ -38,8 +40,11 @@ export default function StackItemDialog() {
           <span>{itemInfo.title}</span>
         </div>
         <div className={styles.dialogBody}>
-          <p>{itemInfo.description}</p>
+          <p>{transformCodeSnippetsInDescription(itemInfo.description)}</p>
         </div>
+        {!!itemInfo.additionalImageUrls?.length && (
+          <StackItemImageCarousel imageUrls={itemInfo.additionalImageUrls} />
+        )}
       </div>
     );
   }
@@ -47,12 +52,18 @@ export default function StackItemDialog() {
   return <Dialog onClose={() => history.push(`/`)}>{children}</Dialog>;
 }
 
+const transformCodeSnippetsInDescription = (description: string) =>
+  reactStringReplace(description, /`(.+)`/g, (match) => (
+    <code key={match}>{match}</code>
+  ));
+
 const WEBSITE_STACK_ITEM_INFO_QUERY = gql`
   query WebsiteStackItemInfo($id: String!) {
     websiteStackItemInfo(id: $id) {
       title
       imageUrl
       description
+      additionalImageUrls
     }
   }
 `;
