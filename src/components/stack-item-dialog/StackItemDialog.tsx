@@ -6,7 +6,7 @@ import { HomePageParams } from 'App';
 import React from 'react';
 import ServerErrorPage from 'views/home/server-error-page/ServerErrorPage';
 import StackItemImageCarousel from 'components/stack-item-image-carousel/StackItemImageCarousel';
-import { WebsiteStackItemInfo } from '@stan/me-types';
+import { WebsiteStackItemInfo } from '@dgoudie/me-types';
 import reactStringReplace from 'react-string-replace';
 import styles from './StackItemDialog.module.scss';
 
@@ -42,8 +42,8 @@ export default function StackItemDialog() {
         <div className={styles.dialogBody}>
           <p>{transformCodeSnippetsInDescription(itemInfo.description)}</p>
         </div>
-        {!!itemInfo.additionalImageUrls?.length && (
-          <StackItemImageCarousel imageUrls={itemInfo.additionalImageUrls} />
+        {!!itemInfo.additionalImages?.length && (
+          <StackItemImageCarousel images={itemInfo.additionalImages} />
         )}
       </div>
     );
@@ -63,7 +63,12 @@ const WEBSITE_STACK_ITEM_INFO_QUERY = gql`
       title
       imageUrl
       description
-      additionalImageUrls
+      additionalImages {
+        url
+        width
+        height
+        title
+      }
     }
   }
 `;

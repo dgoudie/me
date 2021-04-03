@@ -1,4 +1,4 @@
-import { Info, TopSkillItem } from '@stan/me-types';
+import { Info, TopSkillItem } from '@dgoudie/me-types';
 import React, { Component } from 'react';
 import { Subscription, fromEvent } from 'rxjs';
 import { distinctUntilChanged, map, startWith } from 'rxjs/operators';

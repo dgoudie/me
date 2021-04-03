@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Info } from '@stan/me-types';
+import { Info } from '@dgoudie/me-types';
 import WebsiteStack from 'components/website-stack/WebsiteStack';
 import moment from 'moment';
 import styles from './SupplementalInfo.module.scss';

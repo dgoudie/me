@@ -1,4 +1,23 @@
-FROM nginx:1.14.1-alpine
+#
+# Builder stage.
+# This state compile our React App to get the JavaScript code
+#
+FROM node:12.13.0 AS builder
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+COPY tsconfig*.json ./
+COPY ./src ./src
+COPY ./public ./public
+
+# Set env variable
+ENV REACT_APP_GRAPHQL_API=https://me-api.goudie.dev/graphql
+
+RUN npm ci --quiet && npm run build
+
+# Stage 2
+FROM nginx:1.17.1-alpine
 
 ## Copy our default nginx config
 COPY nginx/default.conf /etc/nginx/conf.d/
@@ -7,6 +26,6 @@ COPY nginx/default.conf /etc/nginx/conf.d/
 RUN rm -rf /usr/share/nginx/html/*
 
 ## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
-COPY /build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
 CMD ["nginx", "-g", "daemon off;"]

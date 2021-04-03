@@ -3,13 +3,14 @@ import './Carousel.scss';
 
 import { Carousel } from 'react-responsive-carousel';
 import React from 'react';
+import { WebsiteStackItemInfoImage } from '@dgoudie/me-types';
 import styles from './StackItemImageCarousel.module.scss';
 
 interface Props {
-  imageUrls: string[];
+  images: WebsiteStackItemInfoImage[];
 }
 
-export default function StackItemImageCarousel({ imageUrls }: Props) {
+export default function StackItemImageCarousel({ images }: Props) {
   return (
     <div className={styles.container}>
       <Carousel
@@ -17,8 +18,13 @@ export default function StackItemImageCarousel({ imageUrls }: Props) {
         className={styles.carousel}
         autoPlay={false}
       >
-        {imageUrls.map((url) => (
-          <img className={styles.carouselImage} src={url} alt="" key={url} />
+        {images.map((image) => (
+          <img
+            className={styles.carouselImage}
+            src={image.url}
+            alt={image.title}
+            key={image.url}
+          />
         ))}
       </Carousel>
     </div>

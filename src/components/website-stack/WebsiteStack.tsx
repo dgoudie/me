@@ -9,7 +9,7 @@ import ReactFlow, {
 } from 'react-flow-renderer';
 
 import React from 'react';
-import { WebsiteStackGraphElementData } from '@stan/me-types';
+import { WebsiteStackGraphElementData } from '@dgoudie/me-types';
 import styles from './WebsiteStack.module.scss';
 import { useHistory } from 'react-router-dom';
 import { useResizeDetector } from 'react-resize-detector';

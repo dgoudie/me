@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-import { Info } from '@stan/me-types';
+import { Info } from '@dgoudie/me-types';
 import PersonalInfo from 'components/personal-info/PersonalInfo';
 import React from 'react';
 import ServerErrorPage from './server-error-page/ServerErrorPage';
