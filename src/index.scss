@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600&family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@100;200;300;400;500;600&family=PT+Serif&display=swap');
 
 html {
   -webkit-print-color-adjust: exact;
@@ -16,11 +16,6 @@ html {
   background: var(--color-primary-dark);
 }
 
-body {
-  margin: 0;
-  font-family: 'Maven Pro', sans-serif;
-}
-
 @mixin icon {
   border-radius: 10000px;
   padding: 10px;
@@ -29,4 +24,30 @@ body {
   height: 16px;
   font-size: 16px;
   text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: 'Maven Pro', sans-serif;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+code {
+  border: 1px solid #888;
+  background-color: darken(white, 15%);
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  code {
+    border: 1px solid #666;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 5px;
+    padding: 1px 6px;
+  }
 }

@@ -1,14 +1,16 @@
 import { gql, useQuery } from '@apollo/client';
 
-import { Info } from '@stan/me-types';
+import { Info } from '@dgoudie/me-types';
 import PersonalInfo from 'components/personal-info/PersonalInfo';
 import React from 'react';
 import ServerErrorPage from './server-error-page/ServerErrorPage';
+import StackItemDialog from 'components/stack-item-dialog/StackItemDialog';
 import SupplementalInfo from 'components/supplemental-info/SupplementalInfo';
 import styles from './Home.module.scss';
 
 export default function Home() {
   const { loading, error, data } = useQuery<{ info: Info }>(infoQuery);
+
   if (loading) {
     return <div />;
   }
@@ -26,6 +28,7 @@ export default function Home() {
       >
         <i className="fas fa-chevron-up" />
       </button>
+      <StackItemDialog />
     </div>
   );
 }
@@ -61,14 +64,7 @@ const infoQuery = gql`
         name
         percentage
       }
-      builtWith {
-        iconUrl
-        name
-        links {
-          text
-          url
-        }
-      }
+      websiteStackElements
     }
   }
 `;

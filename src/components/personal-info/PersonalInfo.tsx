@@ -1,4 +1,4 @@
-import { Info, TopSkillItem } from '@stan/me-types';
+import { Info, TopSkillItem } from '@dgoudie/me-types';
 import React, { Component } from 'react';
 import { Subscription, fromEvent } from 'rxjs';
 import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
@@ -106,7 +106,7 @@ export default class PersonalInfo extends Component<Props, State> {
             <section>
               <div>
                 <img
-                  src="https://cdn.goudie.dev/images/daniel.jpg"
+                  src="https://cdn.goudie.dev/images/me/daniel.jpg"
                   alt="Daniel Goudie"
                 />
                 <h3>{this.props.info.name}</h3>
