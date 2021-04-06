@@ -19,12 +19,14 @@ export default function StackItemImageCarousel({ images }: Props) {
         autoPlay={false}
       >
         {images.map((image) => (
-          <img
-            className={styles.carouselImage}
-            src={image.url}
-            alt={image.title}
-            key={image.url}
-          />
+          <React.Fragment key={image.url}>
+            <img
+              className={styles.carouselImage}
+              src={image.url}
+              alt={image.title}
+            />
+            {!!image.title && <p className="legend">{image.title}</p>}
+          </React.Fragment>
         ))}
       </Carousel>
     </div>

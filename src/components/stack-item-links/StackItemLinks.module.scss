@@ -1,0 +1,27 @@
+.root {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: -8px 0 12px;
+}
+.link {
+  border-radius: 1000px;
+  padding: 6px 16px;
+  text-decoration: none;
+  color: var(--color-on-primary);
+  background: var(--link-color);
+  margin: 8px 0 0 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+
+  i {
+    margin-right: 8px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    margin: -8px 0 12px -8px;
+  }
+}

@@ -84,38 +84,6 @@
   }
 }
 
-.builtWith {
-  @include list;
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 18px 0;
-    background: #efefef;
-    border-radius: 15px;
-    padding: 12px;
-  }
-  h4 {
-    flex: 1;
-  }
-}
-
-.builtWithLinks {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-  align-self: stretch;
-
-  a {
-    text-decoration: none;
-    color: var(--link-color);
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
 .imgWrapper {
   display: flex;
   justify-content: center;
@@ -211,7 +179,7 @@
       color: black;
     }
   }
-  .builtWith {
+  .websiteStack {
     display: none;
   }
 }
