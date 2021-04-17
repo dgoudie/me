@@ -28,11 +28,11 @@
     ]
   },
   "devDependencies": {
-    "@apollo/client": "^3.3.7",
+    "@apollo/client": "^3.3.15",
     "@dgoudie/me-types": "^3.0.0",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^25.2.3",
-    "@types/node": "^14.14.24",
+    "@types/node": "^14.14.41",
     "@types/react": "^16.14.3",
     "@types/react-dom": "^16.9.10",
     "@types/react-redux": "^7.1.16",
@@ -43,14 +43,14 @@
     "cross-env": "^7.0.3",
     "fast-sort": "^2.2.0",
     "graphql": "^15.5.0",
-    "http-proxy-middleware": "^1.0.6",
+    "http-proxy-middleware": "^1.1.2",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.14.0",
     "react-flow-renderer": "^8.7.0",
-    "react-resize-detector": "^6.4.0-rc.0",
+    "react-resize-detector": "^6.6.5",
     "react-responsive-carousel": "^3.2.12",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
@@ -60,6 +60,6 @@
     "smoothscroll-polyfill": "^0.4.4",
     "tslint": "^6.1.3",
     "tslint-react": "^5.0.0",
-    "typescript": "^4.1.0"
+    "typescript": "^4.2.4"
   }
 }

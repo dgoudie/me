@@ -33,14 +33,14 @@ export default function Dialog({ children, onClose, loading }: Props) {
         <button className={styles.dialogClose} onClick={onClose}>
           <i className="fas fa-times" />
         </button>
-        {children}
+        <div className={styles.dialogBodyInner}>{children}</div>
       </div>
     );
   }
 
   return (
     <div className={styles.dialog}>
-      <div className={styles.dialogShadow}></div>
+      <div className={styles.dialogShadow} onClick={onClose}></div>
       {body}
     </div>
   );
