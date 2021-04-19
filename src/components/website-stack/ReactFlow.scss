@@ -7,34 +7,17 @@
     text {
       font-weight: lighter;
       letter-spacing: 2px;
+      stroke: var(--font-color-on-secondary-dim);
+    }
+
+    .react-flow__edge-textbg {
+      fill: var(--secondary-info-background);
     }
 
     &.built-with {
       path,
       text {
-        stroke: var(--link-color);
-      }
-    }
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .app-react-flow {
-    .react-flow__edge-textbg {
-      fill: var(--secondary-info-background-dark);
-    }
-    .react-flow__edge {
-      .react-flow__edge-textbg {
-        fill: var(--secondary-info-background-dark);
-      }
-      text {
-        stroke: var(--color-on-primary);
-      }
-
-      &.built-with {
-        path,
-        text {
-          stroke: var(--link-color-on-dark);
-        }
+        stroke: var(--stack-edge-built-with);
       }
     }
   }

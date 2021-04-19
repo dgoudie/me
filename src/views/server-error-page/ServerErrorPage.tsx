@@ -1,10 +1,13 @@
 import { ApolloError } from '@apollo/client';
-import React from 'react';
+import { ErrorContext } from 'App';
+import classNames from 'classnames';
+import React, { useContext } from 'react';
 import styles from './ServerErrorPage.module.scss';
 
-export default function ServerErrorPage({ error }: { error?: ApolloError }) {
+export default function ServerErrorPage() {
+  const { error } = useContext(ErrorContext);
   return (
-    <div className={styles.root}>
+    <div className={classNames(styles.root)}>
       <h1>
         <i className="fas fa-exclamation-triangle" />
         500
@@ -14,7 +17,11 @@ export default function ServerErrorPage({ error }: { error?: ApolloError }) {
         If my monitoring alerted me, I should be aware of this. Please check
         back later.
       </h2>
-      <h3>{error?.networkError?.message}</h3>
+      <h3>
+        {error instanceof ApolloError
+          ? error.networkError?.message
+          : error.message}
+      </h3>
     </div>
   );
 }

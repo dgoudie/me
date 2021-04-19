@@ -2,18 +2,46 @@
 
 html {
   -webkit-print-color-adjust: exact;
-  --color-primary: #3d484e;
-  --color-primary-dark: #283136;
-  --color-on-primary: white;
-  --color-on-primary-light: #aaa;
-  --link-color: #607f8a;
-  --link-color-on-dark: #add8e6;
-  --secondary-info-background: white;
-  --secondary-info-background-dark: #242c30;
-  --print-background-dark: #ddd;
-  --print-background-light: #efefef;
 
-  background: var(--color-primary-dark);
+  --background: #3d484e;
+  --background-alt: #283136;
+  --font-color-on-background: white;
+  --contact-info-icon-background: var(--font-color-on-background);
+  --contact-info-icon-color: var(--background-alt);
+  --link-color-on-background: #add8e6;
+  --secondary-info-background: white;
+  --secondary-info-background-alt: #ebebeb;
+  --font-color-on-secondary: #283136;
+  --font-color-on-secondary-dim: #686969;
+  --progress-bar-fill: white;
+  --secondary-info-section-icon-background: var(--background-alt);
+  --secondary-info-section-icon-color: var(--font-color-on-background);
+  --scroll-to-top-button-color: var(--secondary-info-background);
+  --scroll-to-top-button-background: var(--font-color-on-secondary);
+  --stack-edge-built-with: #45c4ee;
+  --stack-item-link-background: rgba(0, 0, 0, 0.075);
+  --stack-item-link-background-dark: rgba(255, 255, 255, 0.1);
+  --stack-item-link-color: #22a3ce;
+  --stack-item-link-color-dark: #add8e6;
+
+  background: var(--background-alt);
+  color: var(--font-color-on-background);
+
+  @media (prefers-color-scheme: dark) {
+    --secondary-info-background: #242c30;
+    --secondary-info-background-alt: var(--background);
+    --font-color-on-secondary: #fff;
+    --font-color-on-secondary-dim: #aaa;
+    --secondary-info-section-icon-background: var(--background);
+  }
+
+  @media print {
+    --background: #efefef;
+    --background-alt: #ddd;
+    --font-color-on-background: #283136;
+    --link-color-on-background: #283136;
+    --progress-bar-fill: #283136;
+  }
 }
 
 @mixin icon {

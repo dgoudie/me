@@ -5,21 +5,6 @@
   margin: 0 auto;
 }
 
-.personalInfo {
-  flex: 1;
-  color: var(--color-on-primary);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  min-height: 100vh;
-}
-
-.supplementalInfo {
-  padding: 1em 0 0.1px;
-  background-color: white;
-  flex: 1.2;
-}
-
 .scrollToTopButton {
   position: fixed;
   bottom: 18px;
@@ -28,8 +13,8 @@
   width: 48px;
   border-radius: 10000px;
   border: none;
-  background: var(--color-primary-dark);
-  color: white;
+  background: var(--scroll-to-top-button-background);
+  color: var(--scroll-to-top-button-color);
   outline: none;
   cursor: pointer;
   z-index: 5;
@@ -40,27 +25,9 @@
     display: block;
     margin: 0;
   }
-
-  .supplementalInfo {
-    padding-bottom: 64px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .supplementalInfo {
-    background: var(--secondary-info-background-dark);
-  }
-  .scrollToTopButton {
-    background: white;
-    color: var(--color-primary-dark);
-  }
 }
 
 @media print {
-  .supplementalInfo {
-    background-color: white;
-    font-size: 1.3rem;
-  }
   .scrollToTopButton {
     display: none;
   }

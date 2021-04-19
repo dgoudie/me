@@ -1,27 +1,87 @@
 import './ReactFlow.scss';
 
 import ReactFlow, {
-  Elements,
-  FlowElement,
+  Edge,
   Handle,
   HandleProps,
   XYPosition,
 } from 'react-flow-renderer';
 
-import React from 'react';
-import { WebsiteStackGraphElementData } from '@dgoudie/me-types';
+import React, { useContext, useEffect, useState } from 'react';
+import {
+  WebsiteStackGraphElement,
+  WebsiteStackGraphElementData,
+} from '@dgoudie/me-types';
 import styles from './WebsiteStack.module.scss';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useResizeDetector } from 'react-resize-detector';
+import { gql, useQuery } from '@apollo/client';
+import { ErrorContext } from 'App';
+import Loader from 'components/loader/Loader';
 
-interface Props {
-  websiteStackElements: Elements<WebsiteStackGraphElementData>;
-}
+const websiteStackQuery = gql`
+  {
+    websiteStackNodes
+    websiteStackEdges
+  }
+`;
 
-export default function WebsiteStack({ websiteStackElements }: Props) {
-  const { width, ref } = useResizeDetector();
-  const elements = buildElements(websiteStackElements, width);
+export default function WebsiteStack() {
+  const [nodes, setNodes] = useState<WebsiteStackGraphElement[]>([]);
+  const [edges, setEdges] = useState<Edge<void>[]>([]);
+
+  const { data, error, loading } = useQuery<{
+    websiteStackNodes: WebsiteStackGraphElement[];
+    websiteStackEdges: Edge<void>[];
+  }>(websiteStackQuery);
+
+  const { width: containerWidth, ref } = useResizeDetector();
   const history = useHistory();
+
+  const { setError } = useContext(ErrorContext);
+
+  useEffect(() => {
+    if (!containerWidth) {
+      return setNodes([]);
+    }
+    const itemSpacing = containerWidth >= 520 ? 24 : 18;
+    const columnWidth = (containerWidth - 2 * itemSpacing) / 3;
+    const convertedNodes = data?.websiteStackNodes.map((node) => {
+      let elementConverted: WebsiteStackGraphElement = {
+        ...node,
+        type: node.type ?? 'stackItem',
+      };
+      let columnSpan = node.data?.columnSpan ?? 1;
+      const widthHeightStyle: React.CSSProperties = {
+        width: columnWidth * columnSpan + itemSpacing * (columnSpan - 1),
+        height: 100,
+      };
+      let style = { ...widthHeightStyle, ...node.style };
+      const position: XYPosition = {
+        x: node.data.column * columnWidth + node.data.column * itemSpacing,
+        y: node.data.yPosition,
+      };
+      elementConverted = { ...elementConverted, position, style };
+      return elementConverted;
+    });
+    setNodes(convertedNodes ?? []);
+  }, [containerWidth, data]);
+
+  useEffect(() => {
+    if (!!nodes?.length && !!data?.websiteStackEdges) {
+      setEdges(data.websiteStackEdges);
+    }
+  }, [data, nodes]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    setError(error);
+    return <Redirect to="/error" />;
+  }
+
   return (
     //@ts-ignore
     <div className={styles.root} ref={ref}>
@@ -31,7 +91,7 @@ export default function WebsiteStack({ websiteStackElements }: Props) {
         onElementClick={(_event, element) =>
           history.push(!!element.data ? `/${element.id}` : `/`)
         }
-        elements={elements}
+        elements={[...nodes, ...edges]}
         nodesDraggable={false}
         nodesConnectable={false}
         paneMoveable={false}
@@ -42,38 +102,6 @@ export default function WebsiteStack({ websiteStackElements }: Props) {
     </div>
   );
 }
-
-const buildElements = (
-  elementsFromDatabase: Elements<WebsiteStackGraphElementData>,
-  containerWidth?: number
-): Elements<WebsiteStackGraphElementData> => {
-  if (!containerWidth) {
-    return [];
-  }
-  const itemSpacing = containerWidth >= 520 ? 24 : 18;
-  const columnWidth = (containerWidth - 2 * itemSpacing) / 3;
-  return elementsFromDatabase.map((element) => {
-    let elementConverted: FlowElement<WebsiteStackGraphElementData> = {
-      ...element,
-      type: element.type ?? 'stackItem',
-    };
-    if (!!element.data) {
-      let columnSpan = element.data?.columnSpan ?? 1;
-      const widthHeightStyle: React.CSSProperties = {
-        width: columnWidth * columnSpan + itemSpacing * (columnSpan - 1),
-        height: 100,
-      };
-      let style = { ...widthHeightStyle, ...element.style };
-      const position: XYPosition = {
-        x:
-          element.data.column * columnWidth + element.data.column * itemSpacing,
-        y: element.data.yPosition,
-      };
-      elementConverted = { ...elementConverted, position, style };
-    }
-    return elementConverted;
-  });
-};
 
 const StackItem: React.FunctionComponent<{
   data: WebsiteStackGraphElementData;

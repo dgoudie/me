@@ -1,7 +1,6 @@
 .dialog {
   overflow-y: auto;
   max-height: 100%;
-  padding: 12px;
   box-sizing: border-box;
 }
 .dialogHeader {
@@ -29,11 +28,18 @@
   }
 }
 .dialogBody {
+  margin: 0 12px;
   p {
     margin: 1em 8px;
     line-height: 1.5;
   }
 }
+
+.error {
+  height: auto;
+  padding: 48px;
+}
+
 .loading {
   text-align: center;
   display: block;

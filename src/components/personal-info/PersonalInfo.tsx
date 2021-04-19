@@ -1,138 +1,153 @@
-import { Info, TopSkillItem } from '@dgoudie/me-types';
-import React, { Component } from 'react';
-import { Subscription, fromEvent } from 'rxjs';
-import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
+import { Info, Link, TopSkillItem } from '@dgoudie/me-types';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { CSSTransition } from 'react-transition-group';
 import ImageAndName from 'components/image-and-name/ImageAndName';
 import classnames from 'classnames';
-import sort from 'fast-sort';
 import styles from './PersonalInfo.module.scss';
+import { gql, useQuery } from '@apollo/client';
+import { ErrorContext } from 'App';
+import Loader from 'components/loader/Loader';
+import { Redirect } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
 
-interface Props {
-  className?: string;
-  info: Info;
-}
+const personalInfoQuery = gql`
+  {
+    info {
+      name
+      imageUrl
+      title
+      about
+    }
+    links {
+      text
+      textForPrint
+      link
+      faIcon
+      name
+    }
+    topSkills {
+      name
+      percentage
+    }
+  }
+`;
 
-interface State {
-  headerVisible: boolean;
-}
+export default function PersonalInfo() {
+  const [imageAndNameFirstInView, setImageAndNameFirstInView] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
 
-export default class PersonalInfo extends Component<Props, State> {
-  stickySubscription: Subscription | undefined;
-  stickyElementRef = React.createRef<HTMLDivElement>();
+  const { data, error, loading } = useQuery<{
+    info: Info;
+    links: Link[];
+    topSkills: TopSkillItem[];
+  }>(personalInfoQuery);
 
-  state = {
-    headerVisible: false,
-  };
+  const { ref, inView } = useInView({
+    threshold: 0.15,
+  });
 
-  render() {
-    const topSkills: TopSkillItem[] = sort([...this.props.info.topSkills]).by([
-      { desc: (skill: TopSkillItem) => skill.percentage },
-      { asc: (skill: TopSkillItem) => skill.name },
-    ]);
+  useEffect(() => {
+    !!inView && setImageAndNameFirstInView(true);
+  }, [inView]);
+
+  useEffect(() => {
+    setHeaderVisible(!inView && !!imageAndNameFirstInView);
+  }, [inView, imageAndNameFirstInView]);
+
+  const { setError } = useContext(ErrorContext);
+
+  if (loading) {
     return (
-      <div className={this.props.className}>
-        <ImageAndName
-          className={styles.imageAndName}
-          name={this.props.info.name}
-          title={this.props.info.title}
-        />
-        <div className={styles.info}>
-          <div className={styles.sectionWrapper} ref={this.stickyElementRef}>
-            <section>
-              <h3>
-                <i className="fas fa-user"></i>
-                <span>about me</span>
-              </h3>
-              {this.props.info.about.map((item, i) => (
-                <p key={i}>{item}</p>
-              ))}
-            </section>
-            <section className={styles.contact}>
-              <h3>
-                <i className="fas fa-address-book"></i>
-                <span>contact me</span>
-              </h3>
-              <ul>
-                {this.props.info.links.map((link, i) => (
-                  <li key={i}>
-                    <i className={link.faIcon}></i>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={link.link}
-                      className={styles.noPrint}
-                    >
-                      {link.text}
-                    </a>
-                    <span className={styles.print}>{link.textForPrint}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-            <section className={styles.topSkills}>
-              <h3>
-                <i className="fas fa-palette"></i>
-                <span>top skills</span>
-              </h3>
-              <ul>
-                {topSkills.map((skill, i) => (
-                  <li key={i}>
-                    <div>{skill.name}</div>
-                    <div className={styles.skillPercentageBar}>
-                      <div
-                        className={styles.skillPercentageBarFill}
-                        style={{ width: `${skill.percentage}%` }}
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
-        </div>
-        <CSSTransition
-          in={this.state.headerVisible}
-          classNames={{
-            enter: styles.headerEnter,
-            exit: styles.headerExit,
-            enterDone: styles.headerEnterDone,
-            exitDone: styles.headerExitDone,
-          }}
-          timeout={200}
-        >
-          <header className={classnames(styles.header)} key="Header">
-            <section>
-              <div>
-                <img
-                  src="https://cdn.goudie.dev/images/me/daniel.jpg"
-                  alt="Daniel Goudie"
-                />
-                <h3>{this.props.info.name}</h3>
-              </div>
-            </section>
-            <section></section>
-          </header>
-        </CSSTransition>
+      <div className={styles.loading}>
+        <Loader />
       </div>
     );
   }
 
-  componentDidMount() {
-    if (!!this.stickyElementRef.current) {
-      const current = this.stickyElementRef.current;
-      this.stickySubscription = fromEvent(document, 'scroll')
-        .pipe(
-          map(() => current.getBoundingClientRect().top <= 56),
-          distinctUntilChanged(),
-          startWith(false)
-        )
-        .subscribe((stuck) => this.setState({ headerVisible: stuck }));
-    }
+  if (error) {
+    setError(error);
+    return <Redirect to="/error" />;
   }
 
-  componentWillUnmount() {
-    this.stickySubscription?.unsubscribe();
-  }
+  const { info, links, topSkills } = data!;
+  return (
+    <div className={styles.root}>
+      <ImageAndName ref={ref} className={styles.imageAndName} info={info} />
+      <div className={styles.info}>
+        <div className={styles.sectionWrapper}>
+          <section>
+            <h3>
+              <i className="fas fa-user"></i>
+              <span>about me</span>
+            </h3>
+            {info.about.map((item, i) => (
+              <p key={i}>{item}</p>
+            ))}
+          </section>
+          <section className={styles.contact}>
+            <h3>
+              <i className="fas fa-address-book"></i>
+              <span>contact me</span>
+            </h3>
+            <ul>
+              {links.map((link, i) => (
+                <li key={i}>
+                  <i className={link.faIcon}></i>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={link.link}
+                    className={styles.noPrint}
+                  >
+                    {link.text}
+                  </a>
+                  <span className={styles.print}>{link.textForPrint}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className={styles.topSkills}>
+            <h3>
+              <i className="fas fa-palette"></i>
+              <span>top skills</span>
+            </h3>
+            <ul>
+              {topSkills.map((skill, i) => (
+                <li key={i}>
+                  <div>{skill.name}</div>
+                  <div className={styles.skillPercentageBar}>
+                    <div
+                      className={styles.skillPercentageBarFill}
+                      style={{ width: `${skill.percentage}%` }}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      </div>
+      <CSSTransition
+        in={headerVisible}
+        classNames={{
+          enter: styles.headerEnter,
+          exit: styles.headerExit,
+          enterDone: styles.headerEnterDone,
+          exitDone: styles.headerExitDone,
+        }}
+        timeout={200}
+      >
+        <header className={classnames(styles.header)} key="Header">
+          <section>
+            <div>
+              <img src={info.imageUrl} alt={info.name} />
+              <h3>{info.name}</h3>
+            </div>
+          </section>
+          <section></section>
+        </header>
+      </CSSTransition>
+    </div>
+  );
 }

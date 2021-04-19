@@ -2,14 +2,14 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin: -8px 0 12px;
+  margin: -8px 12px 12px;
 }
 .link {
   border-radius: 1000px;
   padding: 6px 16px;
   text-decoration: none;
-  color: var(--color-on-primary);
-  background: var(--link-color);
+  background-color: var(--stack-item-link-background);
+  color: var(--stack-item-link-color);
   margin: 8px 0 0 8px;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -18,10 +18,22 @@
   i {
     margin-right: 8px;
   }
+
+  &.dark {
+    background-color: var(--stack-item-link-background-dark);
+    color: var(--stack-item-link-color-dark);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .link:not(.light) {
+    background-color: var(--stack-item-link-background-dark);
+    color: var(--stack-item-link-color-dark);
+  }
 }
 
 @media screen and (max-width: 600px) {
   .root {
-    margin: -8px 0 12px -8px;
+    margin: -8px 12px 12px 4px;
   }
 }

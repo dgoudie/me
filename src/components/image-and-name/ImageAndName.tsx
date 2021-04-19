@@ -1,26 +1,37 @@
+import { Info } from '@dgoudie/me-types';
+import classNames from 'classnames';
 import React from 'react';
 import styles from './ImageAndName.module.scss';
 
-export default function ImageAndName(props: {
-  name: string;
-  title: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`${styles.root} ${!!props.className ? props.className : ''}`}
-    >
-      <div className={styles.image}>
-        <div className={styles.dummyImageBlock} />
-        <div
-          className={styles.imageInner}
-          style={{
-            backgroundImage: `url(https://cdn.goudie.dev/images/me/daniel.jpg)`,
-          }}
-        ></div>
+type Props = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+> & {
+  info: Info;
+};
+
+const ImageAndName = React.forwardRef<HTMLDivElement, Props>(
+  ({ info, ...props }, ref) => {
+    return (
+      <div
+        {...props}
+        ref={ref}
+        className={classNames(props.className, styles.root)}
+      >
+        <div className={styles.image}>
+          <div className={styles.dummyImageBlock} />
+          <div
+            className={styles.imageInner}
+            style={{
+              backgroundImage: `url(${info.imageUrl})`,
+            }}
+          ></div>
+        </div>
+        <h1 className={styles.name}>{info.name}</h1>
+        <h2 className={styles.title}>{info.title}</h2>
       </div>
-      <h1 className={styles.name}>{props.name}</h1>
-      <h2 className={styles.title}>{props.title}</h2>
-    </div>
-  );
-}
+    );
+  }
+);
+
+export default ImageAndName;
