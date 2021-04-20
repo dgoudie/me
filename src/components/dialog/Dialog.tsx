@@ -45,11 +45,7 @@ export default function Dialog({
     }
     body = (
       <div className={styles.dialogBody}>
-        <button
-          className={styles.dialogClose}
-          onClick={onClose}
-          style={closeButtonStyle}
-        >
+        <button className={styles.dialogClose} onClick={onClose}>
           <i className="fas fa-times" />
         </button>
         <div className={styles.dialogBodyInner} style={dialogStyle}>

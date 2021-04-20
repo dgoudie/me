@@ -1,17 +1,5 @@
 @import '~index.scss';
 
-@mixin list {
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-
-    li {
-      margin: 18px 0;
-    }
-  }
-}
-
 .loading {
   flex: 1;
   display: flex;
@@ -26,6 +14,16 @@
   flex: 1.2;
 }
 
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    margin: 18px 0;
+  }
+}
+
 .inner {
   width: 640px;
 
@@ -35,7 +33,7 @@
     h3 {
       display: flex;
       align-items: center;
-      margin: 0 0 18px -48px;
+      margin: 0 0 0 -48px;
       i {
         @include icon;
         color: var(--secondary-info-section-icon-color);
@@ -48,14 +46,13 @@
     }
     h6 {
       font-weight: 400;
-      margin-top: -18px;
+      margin: 0 0 18px;
       font-size: 0.9rem;
     }
   }
 }
 
 .education {
-  @include list;
   li {
     display: flex;
     align-items: center;
@@ -71,7 +68,6 @@
 }
 
 .workExperience {
-  @include list;
   h4 {
     display: block;
     margin: 4px 0;
@@ -114,6 +110,23 @@
 .websiteStack h6 {
   color: var(--font-color-on-secondary-dim);
 }
+.recentProjects h6 {
+  color: var(--font-color-on-secondary-dim);
+}
+
+.more {
+  display: none;
+  pre {
+    font-family: inherit;
+    margin: 12px 36px 18px 84px;
+    white-space: pre-wrap;
+
+    a {
+      color: var(--link-color-on-secondary-background);
+      text-decoration: none;
+    }
+  }
+}
 
 @media screen and (max-width: 960px) {
   .inner {
@@ -149,8 +162,27 @@
 }
 
 @media print {
-  .root {
-    font-size: 1.3rem;
+  .list {
+    li {
+      margin: 4px 0;
+    }
+  }
+  .inner section {
+    &:first-child {
+      margin: 0 36px 18px 84px;
+    }
+  }
+  .workExperience {
+    p {
+      margin: 8px 0 12px;
+    }
+  }
+  .noPrint {
+    display: none;
+  }
+
+  .more {
+    display: initial;
   }
 }
 

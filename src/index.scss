@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@100;200;300;400;500;600&family=PT+Serif&display=swap');
 
 html {
-  -webkit-print-color-adjust: exact;
-
+  color-adjust: exact;
   --background: #3d484e;
   --background-alt: #283136;
   --font-color-on-background: white;
   --contact-info-icon-background: var(--font-color-on-background);
   --contact-info-icon-color: var(--background-alt);
   --link-color-on-background: #add8e6;
+  --link-color-on-secondary-background: #add8e6;
   --secondary-info-background: white;
   --secondary-info-background-alt: #ebebeb;
+  --link-color-on-secondary-background: #22a3ce;
   --font-color-on-secondary: #283136;
   --font-color-on-secondary-dim: #686969;
   --progress-bar-fill: white;
@@ -24,12 +25,16 @@ html {
   --stack-item-link-color: #22a3ce;
   --stack-item-link-color-dark: #add8e6;
 
+  --box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
   background: var(--background-alt);
   color: var(--font-color-on-background);
 
   @media (prefers-color-scheme: dark) {
     --secondary-info-background: #242c30;
     --secondary-info-background-alt: var(--background);
+    --link-color-on-secondary-background: #add8e6;
     --font-color-on-secondary: #fff;
     --font-color-on-secondary-dim: #aaa;
     --secondary-info-section-icon-background: var(--background);
@@ -41,6 +46,7 @@ html {
     --font-color-on-background: #283136;
     --link-color-on-background: #283136;
     --progress-bar-fill: #283136;
+    background: white;
   }
 }
 
@@ -51,7 +57,9 @@ html {
   width: 16px;
   height: 16px;
   font-size: 16px;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body {

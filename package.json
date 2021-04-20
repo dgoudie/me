@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.3.15",
-    "@dgoudie/me-types": "^4.0.0-5",
+    "@dgoudie/me-types": "^4.0.0",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^25.2.3",
     "@types/node": "^14.14.41",

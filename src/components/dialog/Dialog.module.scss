@@ -9,7 +9,7 @@
   z-index: 5;
   .dialogShadow {
     animation: shadowFade 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9);
     position: absolute;
     top: 0;
     right: 0;
@@ -57,7 +57,7 @@
 @media screen and (max-height: 860px) {
   .dialog {
     .dialogBody {
-      top: 58px;
+      top: 60px;
       bottom: 24px;
     }
   }

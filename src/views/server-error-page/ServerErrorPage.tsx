@@ -2,10 +2,14 @@ import { ApolloError } from '@apollo/client';
 import { ErrorContext } from 'App';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
+import { Redirect } from 'react-router';
 import styles from './ServerErrorPage.module.scss';
 
 export default function ServerErrorPage() {
   const { error } = useContext(ErrorContext);
+  if (!error) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className={classNames(styles.root)}>
       <h1>

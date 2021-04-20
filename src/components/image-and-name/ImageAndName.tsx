@@ -7,7 +7,7 @@ type Props = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 > & {
-  info: Info;
+  info?: Info;
 };
 
 const ImageAndName = React.forwardRef<HTMLDivElement, Props>(
@@ -23,12 +23,12 @@ const ImageAndName = React.forwardRef<HTMLDivElement, Props>(
           <div
             className={styles.imageInner}
             style={{
-              backgroundImage: `url(${info.imageUrl})`,
+              backgroundImage: `url(${info?.imageUrl})`,
             }}
           ></div>
         </div>
-        <h1 className={styles.name}>{info.name}</h1>
-        <h2 className={styles.title}>{info.title}</h2>
+        <h1 className={styles.name}>{info?.name}</h1>
+        <h2 className={styles.title}>{info?.title}</h2>
       </div>
     );
   }

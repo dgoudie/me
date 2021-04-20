@@ -10,17 +10,17 @@ export interface HomePageParams {
 }
 
 type ErrorContextType = {
-  error: ApolloError | Error;
+  error: ApolloError | Error | null;
   setError: (error: Error) => void;
 };
 
 export const ErrorContext = React.createContext<ErrorContextType>({
-  error: new Error('default error'),
+  error: null,
   setError: () => null,
 });
 
 function App() {
-  const [error, setError] = useState(new Error('default error'));
+  const [error, setError] = useState<ApolloError | Error | null>(null);
   return (
     <ErrorContext.Provider value={{ error, setError }}>
       <Router>
