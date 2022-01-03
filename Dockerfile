@@ -2,7 +2,7 @@
 # Builder stage.
 # This state compile our React App to get the JavaScript code
 #
-FROM node:12.13.0 AS builder
+FROM node:16.13.1 AS builder
 
 WORKDIR /usr/src/app
 
