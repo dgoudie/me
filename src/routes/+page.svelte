@@ -30,7 +30,9 @@
 				<a href="https://github.com/dgoudie/me" target="_blank">here</a>.
 			</div>
 			<div class="website">
-				This résumé was exported from my website <a href="https://goudie.dev">https://goudie.dev</a>
+				This résumé was exported from my website <a href="https://daniel.goudie.dev"
+					>https://daniel.goudie.dev</a
+				>
 			</div>
 		</div>
 	</div>
