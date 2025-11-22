@@ -33,6 +33,7 @@
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-vercel": "^6.1.2",
 		"moment": "^2.30.1",
 		"sass-embedded": "^1.93.3"
 	}
