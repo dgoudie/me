@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+
+<style lang="scss">
+	@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+	html {
+		--primary: #252e3c;
+		--primary-dark: #1d222e;
+		--accent: #b49b6a;
+		--font-color: var(--primary-dark);
+		--link-color: #457bd3;
+		--background: #e2e2e0;
+		--background-alt: #d1d1cd;
+		--page-width: 960px;
+		--left-right-padding: calc(1em + 1vw);
+		font-family: 'PT Sans', sans-serif;
+		color: var(--primary-dark);
+		background-color: var(--background);
+		print-color-adjust: exact;
+		letter-spacing: 0.1px;
+	}
+	body {
+		margin: 0;
+	}
+	.gold-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.3rem 0.75rem;
+		font-family: inherit;
+		text-transform: uppercase;
+		font-weight: 600;
+		background: var(--accent);
+		color: var(--primary);
+		border: none;
+		cursor: pointer;
+	}
+	a {
+		color: #2f8aff;
+		text-underline-offset: 3px;
+	}
+	@media print {
+		html {
+			background-color: transparent;
+		}
+	}
+</style>

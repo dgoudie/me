@@ -1,65 +1,39 @@
 {
-  "name": "me",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "start": "cross-env PROXY=https://me-api.goudie.dev react-scripts start",
-    "start:local": "cross-env PROXY=http://localhost:8080 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all",
-      "ie 11"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version",
-      "ie 11"
-    ]
-  },
-  "devDependencies": {
-    "@apollo/client": "^3.3.15",
-    "@dgoudie/me-types": "^4.0.0",
-    "@types/classnames": "^2.2.11",
-    "@types/jest": "^25.2.3",
-    "@types/node": "^14.14.41",
-    "@types/react": "^16.14.3",
-    "@types/react-dom": "^16.9.10",
-    "@types/react-redux": "^7.1.16",
-    "@types/react-router-dom": "^5.1.7",
-    "@types/react-transition-group": "^4.4.0",
-    "@types/smoothscroll-polyfill": "^0.3.1",
-    "classnames": "^2.2.6",
-    "cross-env": "^7.0.3",
-    "graphql": "^15.5.0",
-    "http-proxy-middleware": "^1.1.2",
-    "moment": "^2.29.1",
-    "react": "^16.14.0",
-    "react-app-polyfill": "^1.0.6",
-    "react-dom": "^16.14.0",
-    "react-flow-renderer": "^8.7.0",
-    "react-intersection-observer": "^8.31.1",
-    "react-resize-detector": "^6.6.5",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.4",
-    "react-string-replace": "^0.4.4",
-    "react-transition-group": "^4.4.1",
-    "rxjs": "^6.6.3",
-    "smoothscroll-polyfill": "^0.4.4",
-    "tslint": "^6.1.3",
-    "tslint-react": "^5.0.0",
-    "typescript": "^4.2.4"
-  },
-  "dependencies": {
-    "sass": "^1.45.2"
-  }
+	"name": "me",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint ."
+	},
+	"devDependencies": {
+		"@eslint/compat": "^1.4.0",
+		"@eslint/js": "^9.38.0",
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/kit": "^2.47.1",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@types/node": "^22",
+		"eslint": "^9.38.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.12.4",
+		"globals": "^16.4.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"svelte": "^5.41.0",
+		"svelte-check": "^4.3.3",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.46.1",
+		"vite": "^7.1.10"
+	},
+	"dependencies": {
+		"moment": "^2.30.1",
+		"sass-embedded": "^1.93.3"
+	}
 }
