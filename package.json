@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -30,7 +30,8 @@
 		"svelte-check": "^4.3.3",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.46.1",
-		"vite": "^7.1.10"
+		"vite": "^7.1.10",
+		"vite-plugin-devtools-json": "^1.0.0"
 	},
 	"dependencies": {
 		"@sveltejs/adapter-vercel": "^6.1.2",
