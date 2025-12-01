@@ -8,6 +8,31 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WF1B39BFQG"></script>
+	<script type="module">
+		import { onCLS, onINP, onLCP } from 'https://unpkg.com/web-vitals@5?module';
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-WF1B39BFQG');
+
+		function sendToGoogleAnalytics({ name, delta, value, id }) {
+			gtag('event', name, {
+				value: delta,
+				metric_id: id,
+				metric_value: value,
+				metric_delta: delta
+			});
+		}
+
+		onCLS(sendToGoogleAnalytics);
+		onINP(sendToGoogleAnalytics);
+		onLCP(sendToGoogleAnalytics);
+	</script>
 </html>
 
 <style lang="scss">
