@@ -25,8 +25,8 @@
 				<Hobbies />
 			</div>
 			<div class="source">
-				Website build using <a href="https://svelte.dev/" target="_blank">Svelte</a>. View the
-				source
+				I built this website using <a href="https://svelte.dev/" target="_blank">Svelte</a>. View
+				the source
 				<a href="https://github.com/dgoudie/me" target="_blank">here</a>.
 			</div>
 			<div class="website">
