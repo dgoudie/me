@@ -25,6 +25,7 @@
 	}
 	p {
 		margin-top: 0.25rem;
+		text-align: justify;
 	}
 
 	@media print {

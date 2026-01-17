@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { info } from '$lib/assets/data/info';
 	import { links } from '$lib/assets/data/links';
+	import PrimaryButton from './PrimaryButton.svelte';
 
 	let showContactDetails = $state(false);
 </script>
@@ -31,17 +32,19 @@
 				{/each}
 			</div>
 		{/if}
-		<button
-			class="gold-button contact-details-button"
-			onclick={() => (showContactDetails = !showContactDetails)}
-		>
-			<i class="material-symbols-outlined">contact_mail</i>
-			{#if showContactDetails}
-				Hide Contact Details
-			{:else}
-				Show Contact Details
-			{/if}
-		</button>
+		<div class="contact-details-button">
+			<PrimaryButton
+				icon="contact_mail"
+				onclick={() => (showContactDetails = !showContactDetails)}
+				leadingIcon
+			>
+				{#if showContactDetails}
+					Hide Contact Details
+				{:else}
+					Show Contact Details
+				{/if}
+			</PrimaryButton>
+		</div>
 	</div>
 </header>
 

@@ -34,7 +34,7 @@
 			<div class="website">
 				This résumé was exported from my website <a href="https://daniel.goudie.dev"
 					>https://daniel.goudie.dev</a
-				>
+				>. Please give it a visit for more info about my experience and expertise.
 			</div>
 		</div>
 	</div>
@@ -84,6 +84,7 @@
 	}
 	.website {
 		display: none;
+		grid-column-start: span 2;
 	}
 
 	@media screen and (max-width: 800px) {
