@@ -25,7 +25,7 @@
 				<Hobbies />
 			</div>
 			<div class="source">
-				I built this website usingthe JavaScript framework <a
+				I built this website using the JavaScript framework <a
 					href="https://svelte.dev/"
 					target="_blank">Svelte</a
 				>. View the source
