@@ -6,7 +6,7 @@
 	<WorkExperienceItem
 		iconUrl="/up.svg"
 		company="Union Pacific Railroad"
-		jobTitle="Associate Systems Engineer, Platforms Engineering"
+		jobTitle="Systems Engineer, Platforms Engineering"
 		startDate="2022-05-01T06:00:00.000Z"
 	>
 		{#snippet description()}
