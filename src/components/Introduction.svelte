@@ -5,7 +5,7 @@
 <div class="root">
 	<img class="image" src={info.imageUrl} alt={`${info.firstName} ${info.lastName}`} />
 	<div class="text">
-		{#each info.about as text}
+		{#each info.about as text (text)}
 			<p>{text}</p>
 		{/each}
 	</div>

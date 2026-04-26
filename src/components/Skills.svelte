@@ -3,7 +3,7 @@
 </script>
 
 <div class="list">
-	{#each skills as skill}
+	{#each skills as skill (skill)}
 		<div class="item">{skill}</div>
 	{/each}
 	<div class="more">and many more...</div>

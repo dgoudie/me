@@ -21,7 +21,8 @@
 		</div>
 		{#if showContactDetails}
 			<div class="links">
-				{#each links as link, index}
+				{#each links as link, index (link.text)}
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 					<a class="link" href={link.link} target="_blank" rel="noreferrer">
 						<i class="linkIcon material-symbols-outlined">{link.icon}</i>
 						<span class={{ hasLink: !!link.link }}>{link.text}</span>

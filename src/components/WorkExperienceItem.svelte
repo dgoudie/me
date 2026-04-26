@@ -22,8 +22,8 @@
 		<span>{props.company}</span>
 		<span class="divider">/</span>
 		<span>
-			{moment(props.startDate).format('MMMM YYYY')} -{' '}
-			{!!props.endDate ? moment(props.endDate).format('MMMM YYYY') : 'Present'}
+			{moment(props.startDate).format('MMMM YYYY')} -
+			{props.endDate ? moment(props.endDate).format('MMMM YYYY') : 'Present'}
 		</span>
 	</div>
 	<p class="description">{@render props.description()}</p>

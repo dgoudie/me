@@ -3,12 +3,12 @@
 </script>
 
 <div class="list">
-	{#each education as educationItem, i}
+	{#each education as educationItem (educationItem.title)}
 		<div class="item">
 			<img class="image" src={educationItem.iconUrl} alt={educationItem.title} />
 			<div>
 				<div class="title">{educationItem.title}</div>
-				{#each educationItem.secondaryInfo as text, i}
+				{#each educationItem.secondaryInfo as text (text)}
 					<div class="secondary">
 						{text}
 					</div>
